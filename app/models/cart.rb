@@ -14,6 +14,12 @@ class Cart
     contents[experience_id.to_s] += 1
   end
 
+  def subtract_experience(experience_id)
+    contents[experience_id.to_s] ||= 0
+    contents[experience_id.to_s] -= 1
+  end
+
+
   def count_of(experience_id)
     contents[experience_id.to_s]
   end

@@ -27,21 +27,25 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
     create(:experience)
 
     visit experiences_path
-    expect(page).to have_content("Cart 0")
+    expect(page).to have_content("Cart (0)")
 
     click_button "Add to cart"
-    expect(page).to have_content("Cart 1")
+    expect(page).to have_content("Cart (1)")
 
     click_button "Add to cart"
-    expect(page).to have_content("Cart 2")
+    expect(page).to have_content("Cart (2)")
 
 
   end
   scenario "the cart shows all the experieces that have been added" do
-      click_on "Cart"
+    exp = create(:experience)
+    visit experiences_path
+    click_button "Add to cart"
 
-# And my current path should be "/cart"
-# expect(current_path).to eq "/cart"
+    click_on "Cart"
+
+    # And my current path should be "/cart"
+    expect(current_path).to eq "/cart"
 # need to figure out how to make custom url
 
 # page.should have_css('img', text: "image1.jpg")
