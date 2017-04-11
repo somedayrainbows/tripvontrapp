@@ -19,7 +19,11 @@ FactoryGirl.define do
 #alias for specific kinds of factories
 
   factory :category do
-    name "Art and Culture"
+    name
+  end
+
+  sequence :name do |n|
+    "#{n} name"
   end
 
 

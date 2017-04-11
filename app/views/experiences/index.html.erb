@@ -1,7 +1,13 @@
-<h1>All Experiences</h1>
+<h1>Experience Denver Like a Local</h1>
+
+
+<h3> <%= link_to "Browse by Interest", categories_path  %><h3>
 
 <%  @experiences.each do |experience| %>
   <p>Experience: <%= experience.title %></p>
-  <p>Cost: <%= experience.cost %></p>
+  <p>Cost: $<%= experience.cost %></p>
+  <p>Categories: <% experience.categories.pluck(:name).each do |name| %>
+     <%= link_to "#{name}", experience_category_path(:experience_id, :id) %>
+   <% end %></p>
   <%= button_to "Add to cart", carts_path(experience_id: experience.id) %>
 <% end %>
