@@ -24,8 +24,12 @@ class Cart
     contents[experience_id.to_s]
   end
 
-  def experiences
-    experience_id = contents.keys
-    Experience.where(id: experience_id)
+  # cart experiences
+
+  def cart_experiences
+    # map over keys of contents for each of them call new PORO cart experiences
+    # delegators, simple delegators
+    experience_ids = contents.keys
+    Experience.where(id: experience_ids)
   end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 describe "visitor views all experiences" do
-  scenario "when they visit the experience index" do
+  xscenario "when they visit the experience index" do
 
       art_walk = create(:experience)
       visit category_experiences_path
