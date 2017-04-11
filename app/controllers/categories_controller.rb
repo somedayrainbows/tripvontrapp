@@ -1,5 +1,12 @@
 class CategoriesController < ApplicationController
-  def show
-    @category = Category.find_by(name: params[:name])
+
+  def index
+    @categories = Category.all
   end
+
+  def show
+    # @experience = Experience.find(params[:experience_id])
+    # @category = @experience.categories.find(params[:id])
+  end
+
 end

@@ -1,0 +1,12 @@
+<h1>My Cart</h1>
+
+<div>
+  <% @cart_contents.each do |item, amount|  %>
+  <div class="col-md-3 text-center item-container">
+    <p><%= "Experience: #{item}, Amount: #{amount}"  %></p>
+    </div>
+    <% end %>
+    <p>Total Items: <%= @cart.total_count%></p>
+
+  <%= link_to "All items", experiences_path %>
+</div>

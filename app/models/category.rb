@@ -1,7 +1,5 @@
 class Category < ActiveRecord::Base
-has_many :experiences
+  has_many :experience_categories
+  has_many :experiences, through: :experience_categories
 
-  def to_param
-    name
-  end
 end
