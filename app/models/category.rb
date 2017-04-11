@@ -1,3 +1,4 @@
 class Category < ActiveRecord::Base
-
-end 
+  has_many :experience_categories
+  has_many :experiences, through: :experience_categories
+end
