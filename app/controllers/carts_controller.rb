@@ -1,18 +1,16 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
-
-  def index
-    @cart_contents = @cart.contents
-  end
-
   def create
-    experience = Experience.find(params[:experience_id])
 
+    experience = Experience.find(params[:experience_id])
     @cart.add_experience(experience.id)
     session[:cart] = @cart.contents
-
-    redirect_to cart_path
+    flash[:notice] = "#{pluralize(@cart.count_of(experience.id), experience.title)} added to your cart."
+    redirect_to experiences_path
   end
 
+  def index
+    @experiences = @cart.experiences
+  end
 end

@@ -1,12 +1,7 @@
-<h1>My Cart</h1>
-
-<div>
-  <% @cart_contents.each do |item, amount|  %>
-  <div class="col-md-3 text-center item-container">
-    <p><%= "Experience: #{item}, Amount: #{amount}"  %></p>
-    </div>
-    <% end %>
-    <p>Total Items: <%= @cart.total_count%></p>
-
-  <%= link_to "All items", experiences_path %>
-</div>
+<h1>Cart</h1>
+<% @experiences.each do |experience| %>
+  Title: <%= experience.title %> <br>
+  Description: <%= experience.description %><br>
+  Cost: <%= experience.cost %><br>
+  <%= button_to "Increase Quantity", carts_path(experience_id: experience.id) %>
+<% end %>

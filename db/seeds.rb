@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Experience.create(title: "Art Walk", description: "Walk and look at art", cost: 25, city: "Denver")
