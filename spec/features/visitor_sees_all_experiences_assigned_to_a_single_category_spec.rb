@@ -1,18 +1,19 @@
 require 'rails_helper'
 
-describe "User sees all experiences" do
-  scenario "when they visit the category show" do
+describe "User sees all experiences assigned to a single category" do
+  scenario "when they visit that category's show page" do
+    category = build(:category)
+    experience = build_list(:experience, 2)
 
-    arts = create(:category)
-    art_walk = create_list(:experience, 2)
+    visit category_path(category)
 
 
     visit "/arts"
 
 
     expect(page).to have_content("arts")
-    expect(page).to have_content(art_walk.first.title)
-    expect(page).to have_content(art_walk.last.title)
+    expect(page).to have_content(experience.first.title)
+    expect(page).to have_content(experience.last.title)
     expect(page).to have_button("Add to cart")
 
   end

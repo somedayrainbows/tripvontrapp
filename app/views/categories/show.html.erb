@@ -1,6 +1,5 @@
 <%= link_to "All experiences", experiences_path %>  <%= link_to "Browse by Interest", categories_path %>
-<h1><%= @category.name%></h1>
-
+<h1>Experiences in the <%= @category.name %> category</h1>
 
 <% @category.experiences.each do |experience| %>
   <h2> <%= experience.title %></h2>
