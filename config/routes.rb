@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   resources :carts
 
-
+  get '/:category_slug', to: "categories#show", as: :category_slug
 
 
 end
