@@ -4,21 +4,14 @@ class Category < ActiveRecord::Base
 
   validates_uniqueness_of :name
 
- #  attr_accessor :title
- #
- #  def slug
- #    name.downcase.gsub(" ", "-")
- #  end
- #
+  before_save :create_slug
+
+  def create_slug
+    self.slug = name.parameterize
+  end
+
  def to_param
-   name
+   self.slug
  end
-
-
- # def self.find(input)
- #   find_by_name(input)
- # end
-
-
 
 end

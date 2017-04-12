@@ -11,10 +11,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/login', to: 'sessions#destroy'
 
-  resources :categories, only: [:index, :show]
+  resources :categories, only: [:index]
   resources :experiences, only: [:index]
 
 
-  resource :cart
+
+  resource :cart, only: [:create, :update, :show]
+  put '/cart/remove', to: 'carts#remove'
+
+  get '/:category_slug', to: "categories#show", as: :category
 
 end
