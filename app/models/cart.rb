@@ -24,8 +24,16 @@ class Cart
     contents[experience_id.to_s]
   end
 
-  def experiences
-    experience_id = contents.keys
-    Experience.where(id: experience_id)
+  def cart_experiences
+    contents.map do |id, quantity|
+      byebug
+      CartExperience.new(id, quantity)
+    end
+    # experience_ids = contents.keys
+    # Experience.where(id: experience_ids)
+  end
+
+  def remove_experience(experience_id)
+    contents.delete(experience_id)
   end
 end

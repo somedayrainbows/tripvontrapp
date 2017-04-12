@@ -5,7 +5,11 @@ class CategoriesController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
   
+=======
+    @category = Category.find_by_slug(params[:category_slug])
+>>>>>>> master
   end
 
 end

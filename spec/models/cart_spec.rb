@@ -22,13 +22,16 @@ RSpec.describe Cart, type: :model do
     expect(cart.count_of(1)).to eq(3)
   end
 
-  it "can retrieve the experiecees from the database" do
+  it "can create the cart experiecees" do
     exp = create(:experience)
 
     cart = Cart.new({ "1" => 1})
 
-    experiences = cart.experiences
+    experiences = cart.cart_experiences
 
-    expect(experiences.first.title)
+    expect(experiences.first.title).to eq(exp.title)
   end
+
+  it 'can create cart_items'
+
 end
