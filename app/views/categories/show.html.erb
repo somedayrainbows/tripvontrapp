@@ -7,4 +7,5 @@
   <%= image_tag "#{experience.image_path}", class: "img-responsive", size: "608x472" %>
       <p>Cost per person: $<%= experience.cost %></p>
     <%= button_to "Add to cart", cart_path(experience_id: experience.id) %><br>
+
 <% end %>
