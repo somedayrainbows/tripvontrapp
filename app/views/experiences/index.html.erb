@@ -7,7 +7,7 @@
   <p>Experience: <%= experience.title %></p>
   <p>Cost: $<%= experience.cost %></p>
   <p>Categories: <% experience.categories.pluck(:name).each do |name| %>
-     <%= link_to "#{name}", experience_category_path(:experience_id, :id) %>
+     <%= link_to "#{name}", category_path(experience.categories) %>
    <% end %></p>
   <%= button_to "Add to cart", carts_path(experience_id: experience.id) %>
 <% end %>

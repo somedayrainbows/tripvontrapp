@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    # @experience = Experience.find(params[:experience_id])
-    # @category = @experience.categories.find(params[:id])
+    byebug
+    @category = Category.find_by(name: params[:category_name])
   end
 
 end
