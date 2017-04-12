@@ -12,11 +12,11 @@ FactoryGirl.define do
 
 
   sequence :title do |n|
-    "#{n} title"
+    n
   end
 
   sequence :description do |n|
-    "#{n} description"
+    n
   end
 
 
@@ -25,8 +25,7 @@ FactoryGirl.define do
   end
 
   sequence :name do |n|
-    "#{n} name"
+    n
   end
-
 
 end

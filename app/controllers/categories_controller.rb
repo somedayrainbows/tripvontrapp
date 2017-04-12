@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-
   def index
     @categories = Category.all
   end
@@ -7,5 +6,4 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find_by_slug(params[:category_slug])
   end
-
 end
