@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    # @cart_experiences = @cart.cart_experiences
+    @cart_experiences = @cart.cart_experiences
   end
 
   def update
@@ -18,7 +18,6 @@ class CartsController < ApplicationController
     experience = Experience.find(params[:experience_id])
     if type == "increase"
       @cart.add_experience(experience.id)
-      byebug
       session[:cart] = @cart.contents
     elsif type == "decrease"
       @cart.subtract_experience(experience.id)

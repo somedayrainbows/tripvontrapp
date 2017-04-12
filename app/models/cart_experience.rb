@@ -6,19 +6,3 @@ class CartExperience < SimpleDelegator
     super Experience.find(@id)
   end
 end
-
-
-
-
-
-
-
-
-
-
-
-
-# extend Forwardable
-#
-# def_delegators :@experience, :title, :description, :cost, :city, :image_path
-# delegate :Experience, :title
