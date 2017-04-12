@@ -5,7 +5,11 @@ FactoryGirl.define do
     description
     cost 25
     city "Denver"
+    categories { create_list(:category, 2) }
   end
+
+#creating factories with associations in the docs
+
 
   sequence :title do |n|
     "#{n} title"

@@ -3,14 +3,16 @@ require 'rails_helper'
 describe "User sees all experiences" do
   scenario "when they visit the category show" do
 
-    arts = create(:category)
-    art_walk = create_list(:experience, 2)
+    art_walk = create(:experience)
+    category = art_walk.categories.first
+    brewery_tour = create(:experience)
+    brewery_tour.categories << category
 
-    visit "/arts"
+    visit category_path(category)
 
-    expect(page).to have_content("arts")
-    expect(page).to have_content(art_walk.first.title)
-    expect(page).to have_content(art_walk.last.title)
+    expect(category.experiences.count).to eq(2)
+    expect(page).to have_content(art_walk.title)
+    expect(page).to have_content(brewery_tour.title)
     expect(page).to have_button("Add to cart")
 
   end
