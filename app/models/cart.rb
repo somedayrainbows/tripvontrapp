@@ -26,13 +26,13 @@ class Cart
 
   # cart experiences
 
-  def cart_experiences
-    # map over keys of contents for each of them call new PORO cart experiences
-    # delegators, simple delegators
-    contents.map do |id, quantity|
-      byebug
-      CartExperiences.new(id, quantity)
-    end
+  # def cart_experiences
+  #   # map over keys of contents for each of them call new PORO cart experiences
+  #   # delegators, simple delegators
+  #   contents.map do |id, quantity|
+  #     byebug
+  #     CartExperiences.new(id, quantity)
+  #   end
   #   experience_ids = contents.keys
   #   Experience.where(id: experience_ids)
   end
