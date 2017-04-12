@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :experiences, only: [:index]
 
 
-  resource :cart
+  resource :cart, only: [:create, :update, :show]
+  put '/cart/remove', to: 'carts#remove'
 
 end

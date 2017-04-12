@@ -44,17 +44,19 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
 
     click_on "Cart"
 
-    # And my current path should be "/cart"
     expect(current_path).to eq "/cart"
 
 # page.should have_css('img', text: "image1.jpg")
 # need to add image column to database
-      # And I should see a small image, title, description and price for the item I just added
+# And I should see a small image, title, description and price for the item I just added
+      within(".col-sm-2 hidden-xs") do
+        expect(page).to have_content(exp.image_path)
+      end
       expect(page).to have_content(exp.title)
       expect(page).to have_content(exp.description)
       expect(page).to have_content(exp.cost)
 
-      within first('.adjust-cart') do
+      within ("td") do
         expect(page).to have_button("+")
         expect(page).to have_button("-")
       end
