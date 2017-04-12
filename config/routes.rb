@@ -5,8 +5,15 @@ Rails.application.routes.draw do
   get '/cart', to: 'carts#index'
   post '/cart', to: 'carts#index'
 
+
   resources :categories, only: [:index, :show]
   resources :experiences, only: [:index]
 
   resources :carts
+
+  get '/:category_name', to: 'categories#show'
+
+  # get ':category_name' => 'categories#index'
+
+
 end
