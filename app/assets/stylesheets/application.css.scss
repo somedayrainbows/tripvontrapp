@@ -1,0 +1,53 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+ .table>tbody>tr>td, .table>tfoot>tr>td{
+     vertical-align: middle;
+ }
+ @media screen and (max-width: 600px) {
+     table#cart tbody td .form-control{
+ 		width:20%;
+ 		display: inline !important;
+ 	}
+ 	.actions .btn{
+ 		width:36%;
+ 		margin:1.5em 0;
+ 	}
+
+ 	.actions .btn-info{
+ 		float:left;
+ 	}
+ 	.actions .btn-danger{
+ 		float:right;
+ 	}
+
+ 	table#cart thead { display: none; }
+ 	table#cart tbody td { display: block; padding: .6rem; min-width:320px;}
+ 	table#cart tbody tr td:first-child { background: #333; color: #fff; }
+ 	table#cart tbody td:before {
+ 		content: attr(data-th); font-weight: bold;
+ 		display: inline-block; width: 8rem;
+ 	}
+
+
+
+ 	table#cart tfoot td{display:block; }
+ 	table#cart tfoot td .btn{display:block;}
+
+ }
