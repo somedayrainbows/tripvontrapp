@@ -2,11 +2,12 @@ class Category < ActiveRecord::Base
   has_many :experience_categories
   has_many :experiences, through: :experience_categories
 
-  # validates_uniqueness_of :name
+  validates_uniqueness_of :name
+  validates_presence_of :slug
+
+  attr_accessor :title, :slug
 
   # before_save :create_slug
-
- #  attr_accessor :title
  #
 
  # def create_slug
