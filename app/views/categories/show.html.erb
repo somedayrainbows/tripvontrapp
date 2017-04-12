@@ -2,8 +2,11 @@
 
 
 <% @category.experiences.each do |experience| %>
-<p>Experience: <%= experience.title %></p>
-<p>Cost: $<%= experience.cost %></p>
-
-<%= button_to "Add to cart", carts_path(experience_id: experience.id) %>
+  <h2> <%= experience.title %></h2>
+  <%= image_tag "#{experience.image_path}", class: "img-responsive" %>
+      <p>Cost per person: $<%= experience.cost %></p>
+      <p>Categories: <% experience.categories.pluck(:name).each do |name| %>
+        <%= link_to "#{name}", category_path(experience.categories) %>
+        <% end %></p>
+    <%= button_to "Add to cart", cart_path(experience_id: experience.id) %><br>
 <% end %>

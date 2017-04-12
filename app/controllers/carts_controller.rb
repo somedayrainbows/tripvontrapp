@@ -10,7 +10,7 @@ class CartsController < ApplicationController
   end
 
   def show
-    @cart_experiences = @cart.cart_experiences
+    # @cart_experiences = @cart.cart_experiences
   end
 
   def update
