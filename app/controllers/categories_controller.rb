@@ -5,8 +5,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    byebug
-    @category = Category.find_by(name: params[:category_name])
+    # @category = Category.find_by(name: params[:category_name])
+    @category = Category.find(params[:id])
   end
 
 end

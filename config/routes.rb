@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :experiences, only: [:index]
 
+
   resource :cart
 
 end
