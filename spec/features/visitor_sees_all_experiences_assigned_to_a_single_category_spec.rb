@@ -7,7 +7,9 @@ describe "User sees all experiences assigned to a single category" do
 
     visit category_path(category)
 
+
     visit "/arts"
+
 
     expect(page).to have_content("arts")
     expect(page).to have_content(experience.first.title)
