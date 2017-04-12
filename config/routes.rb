@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/:category_slug', to: "categories#show", as: :category_slug
 
-  resource :cart
+  resource :cart, only: [:create, :update, :show]
+  put '/cart/remove', to: 'carts#remove'
 
 end
