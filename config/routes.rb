@@ -11,9 +11,7 @@ Rails.application.routes.draw do
 
   resources :carts
 
-  get '/:category_name', to: 'categories#show'
 
-  # get ':category_name' => 'categories#index'
 
 
 end
