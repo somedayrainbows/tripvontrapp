@@ -35,7 +35,7 @@ class Cart
   #   end
   #   experience_ids = contents.keys
   #   Experience.where(id: experience_ids)
-  end
+  # end
 
   def remove_experience(experience_id)
     contents.delete(experience_id)
