@@ -16,8 +16,6 @@ FactoryGirl.define do
   end
 
 
-#alias for specific kinds of factories
-
   factory :category do
     name
   end
@@ -25,7 +23,6 @@ FactoryGirl.define do
   sequence :name do |n|
     "#{n} name"
   end
-
 
 
 end

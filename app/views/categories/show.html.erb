@@ -1,9 +1,10 @@
+<%= link_to "All experiences", experiences_path %>  <%= link_to "Browse by Interest", categories_path %>
 <h1><%= @category.name%></h1>
 
 
 <% @category.experiences.each do |experience| %>
-<p>Experience: <%= experience.title %></p>
-<p>Cost: $<%= experience.cost %></p>
-
-<%= button_to "Add to cart", carts_path(experience_id: experience.id) %>
+  <h2> <%= experience.title %></h2>
+  <%= image_tag "#{experience.image_path}", class: "img-responsive", size: "608x472" %>
+      <p>Cost per person: $<%= experience.cost %></p>
+    <%= button_to "Add to cart", cart_path(experience_id: experience.id) %><br>
 <% end %>
