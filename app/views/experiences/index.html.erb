@@ -10,6 +10,6 @@
 
      <%= link_to "#{name}", category_path(experience.categories) %>
    <% end %></p>
-  <%= button_to "Add to cart", carts_path(experience_id: experience.id) %>
+  <%= button_to "Add to cart", cart_path(experience_id: experience.id) %>
 
 <% end %>
