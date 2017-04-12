@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:index, :show]
   resources :experiences, only: [:index]
 
-  get '/:category_slug', to: "categories#show", as: :category_slug
+  # get '/:category_slug', to: "categories#show", as: :category_slug
 
   resource :cart
 

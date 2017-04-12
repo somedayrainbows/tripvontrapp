@@ -9,5 +9,5 @@
         <p>Categories: <% experience.categories.pluck(:name).each do |name| %>
           <%= link_to "#{name}", category_path(experience.categories) %>
           <% end %></p>
-  <%= button_to "Add to cart", carts_path(experience_id: experience.id) %><br>
+  <%= button_to "Add to cart", cart_path(experience_id: experience.id) %><br>
 <% end %>
