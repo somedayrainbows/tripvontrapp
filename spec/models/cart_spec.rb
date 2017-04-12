@@ -27,7 +27,7 @@ RSpec.describe Cart, type: :model do
 
     cart = Cart.new({ "1" => 1})
 
-    experiences = cart.experiences
+    experiences = cart.cart_experiences
 
     expect(experiences.first.title)
   end

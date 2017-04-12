@@ -1,7 +1,0 @@
-<h1>Cart</h1>
-<% @experiences.each do |experience| %>
-  Title: <%= experience.title %> <br>
-  Description: <%= experience.description %><br>
-  Cost: <%= experience.cost %><br>
-  <%= button_to "Increase Quantity", carts_path(experience_id: experience.id) %>
-<% end %>

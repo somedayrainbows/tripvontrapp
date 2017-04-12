@@ -46,7 +46,6 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
 
     # And my current path should be "/cart"
     expect(current_path).to eq "/cart"
-# need to figure out how to make custom url
 
 # page.should have_css('img', text: "image1.jpg")
 # need to add image column to database
@@ -54,6 +53,11 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
       expect(page).to have_content(exp.title)
       expect(page).to have_content(exp.description)
       expect(page).to have_content(exp.cost)
+
+      within first('.adjust-cart') do
+        expect(page).to have_button("+")
+        expect(page).to have_button("-")
+      end
 
       # And there should be a "total" price for the cart that should be the sum of all items in the cart
       expect(page).to have_content("Total:")
