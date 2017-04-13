@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete '/login', to: 'sessions#destroy'
 
   resources :categories, only: [:index]
-  resources :experiences, only: [:index]
+  resources :experiences, only: [:index, :show]
 
 
 
