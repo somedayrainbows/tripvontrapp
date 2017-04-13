@@ -33,4 +33,10 @@ class Cart
   def remove_experience(experience_id)
     contents.delete(experience_id)
   end
+
+  def total
+    cart_collection = cart_experiences
+    cart_collection.reduce(0) { |sum, exp| sum + exp.subtotal }
+  end
+
 end
