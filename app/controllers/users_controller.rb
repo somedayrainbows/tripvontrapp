@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     flash[:success] = "Logged in as #{@user.name}. Welcome!"
-    redirect_to user_path(@user)
+    redirect_to dashboard_path
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   private
