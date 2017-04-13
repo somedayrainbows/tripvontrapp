@@ -31,21 +31,19 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/">TripVonTrapp</a>
+                    <a class="navbar-brand" href="/"><img src="https://www.flairtradetravels.org/assets/tvt_logo3.png" height="25"></a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="experiences">Browse by Experiences</a></li>
                         <li><a href="categories">Browse by Category</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <!-- <li><a href="#">Contact</a></li> -->
                         <li id="view_cart"><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (<%= @cart.total_count %>)</a></li>
-                        <% if current_user %>
-                          <li id="logout"><%= link_to "Logout", logout_path, method: :delete %></li>
-                        <% else %>
-                          <li id="login"><%= link_to "Login", login_path %></li>
-                        <% end %>
-                          <!-- <#% if current_user ....%#>  LINK TO AUTH NAV, check gifgenerator, and in show for cart too -->
+
+                        <li ><%= link_to "Profile", dashboard_path if session[:user_id] %></li>
+                        <li><%= link_to "Logout", logout_path, method: :delete if session[:user_id] %></li>
+                        <li id="login"><%= link_to "Login", login_path unless session[:user_id] %></li>
 
                     </ul>
                 </div>

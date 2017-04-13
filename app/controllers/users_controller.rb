@@ -5,9 +5,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
-    session[:user_id] = @user.id
-    flash[:success] = "Logged in as #{@user.name}. Welcome!"
-    redirect_to dashboard_path
+    if @user.save
+      flash[:success] = "Logged in as #{@user.name}. Welcome!"
+      session[:user_id] = @user.id
+      redirect_to dashboard_path
+    else
+      flash[:danger] = "An error occurred. Please try again."
+      render :new
+    end
   end
 
   def show
