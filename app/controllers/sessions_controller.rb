@@ -9,12 +9,14 @@ class SessionsController < ApplicationController
       flash[:success] = "Logged in as #{@user.name}. Welcome!"
       redirect_to dashboard_path
     else
+      flash[:danger] = "Invalid user/password combination."
       render :new
     end
   end
 
   def destroy
     session[:user_id] = nil
+    flash[:success] = "You have logged out successfully."
     redirect_to login_path
   end
 end
