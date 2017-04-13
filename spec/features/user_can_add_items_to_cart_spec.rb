@@ -49,7 +49,7 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
 # page.should have_css('img', text: "image1.jpg")
 # need to add image column to database
 # And I should see a small image, title, description and price for the item I just added
-      within(".col-sm-2 hidden-xs") do
+      within("image_path") do
         expect(page).to have_content(exp.image_path)
       end
       expect(page).to have_content(exp.title)
