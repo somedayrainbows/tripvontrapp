@@ -4,11 +4,13 @@ describe 'User visits root' do
   scenario 'they click a link to login and are redirected to a login page where they see the form to create a new account' do
     # As a visitor
     # When I visit "/"
-# visit "/"
+    visit "/"
     # Then I should see a link for "Login"
+    expect(page).to have_content("Login")
     # And when I click "Login"
-# click_link "Login"
+    click_link "Login"
     # And I should be on the "/login" page
+
     visit "/login"
 
     expect(current_path).to eq(login_path)
@@ -42,7 +44,7 @@ describe "user visits login page" do
     # And I submit my information
     # Then my current page should be "/dashboard"
     # And I should see a message in the navbar that says "Logged in as SOME_USER"
-    expect(current_path).to eq(user_path(User.last))
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Logged in as Natbot. Welcome!")
     # And I should see my profile information
     expect(page).to have_content("Profile Information")
@@ -51,7 +53,7 @@ describe "user visits login page" do
     # And I should not see a link for "Login"
     expect(page).to_not have_content("Login")
     # And I should see a link for "Logout"
-    expect(page).to have_button("Logout")
+    expect(page).to have_content("Logout")
 
     click_on "Logout"
 
