@@ -5,7 +5,7 @@ class CartsController < ApplicationController
     experience = Experience.find(params[:experience_id])
     @cart.add_experience(experience.id)
     session[:cart] = @cart.contents
-    flash[:notice] = "#{pluralize(@cart.count_of(experience.id), experience.title)} added to your cart."
+    flash[:success] = "#{pluralize(@cart.count_of(experience.id), experience.title)} added to your cart."
     redirect_to experiences_path
   end
 
@@ -29,8 +29,8 @@ class CartsController < ApplicationController
   def remove
     experience= Experience.find(params[:experience_id])
     @cart.remove_experience(params[:experience_id])
-    # flash[:notice] = "Successfully removed <a href='/experience/#{experience.id}' > #{experience.title}</a> from your cart."
-    # flash[:notice] = link_to(experience.title, experiences_path(experience.id))
+    # flash[:danger] = "Successfully removed <a href='/experience/#{experience.id}' > #{experience.title}</a> from your cart."
+    # flash[:] = link_to(experience.title, experiences_path(experience.id))
     redirect_to cart_path
   end
 end

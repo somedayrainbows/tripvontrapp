@@ -24,15 +24,16 @@
 							</td>
 							<td data-th="Price"><%= experience.cost %></td>
 							<td data-th="Quantity">
-								<input type="number" class="form-control text-center" value="1">
+								<input type="number" class="form-control text-center" value="<%= experience.quantity %>">
                 <%= button_to "+", cart_path(experience_id: experience.id, type: "increase"), class: "btn-sm", method: :put %>
                 <%= button_to "-", cart_path(experience_id: experience.id, type: "decrease"), class: "btn-sm", method: :put %>
 								</td>
-							<td data-th="Subtotal" class="text-center">1.99</td>
+							<td data-th="Subtotal" class="text-center"><%= experience.subtotal %></td>
 							<td class="actions" data-th="">
-								<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
-								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
-								<%= button_to "remove", '/cart/remove', method: :put, params: [experience_id: experience.id] %>
+								<!-- <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
+								<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button> -->
+
+								<%= button_to "remove", '/cart/remove', method: :put, params: [experience_id: experience.id], class: "btn btn-danger btn-sm" %>
 							</td>
 						</tr>
             <% end %>

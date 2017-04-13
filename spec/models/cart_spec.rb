@@ -31,7 +31,4 @@ RSpec.describe Cart, type: :model do
 
     expect(experiences.first.title).to eq(exp.title)
   end
-
-  it 'can create cart_items'
-
 end
