@@ -1,0 +1,9 @@
+<h1><%= @experience.title %></h1>
+
+<%= image_tag @experience.image_path, class: "thumbnail", size: "304x236" %>
+    <p><%= @experience.description %>
+    <p>Cost per person: $<%= @experience.cost %></p>
+    <p>Categories: <% @experience.categories.each do |category| %>
+      <%= link_to "#{category.name}", category_path(category) %>
+      <% end %></p>
+<%= button_to "Add to cart", cart_path(experience_id: @experience.id), class: "btn btn-info" %><br>
