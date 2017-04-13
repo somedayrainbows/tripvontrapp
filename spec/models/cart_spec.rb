@@ -32,6 +32,13 @@ RSpec.describe Cart, type: :model do
     expect(experiences.first.title).to eq(exp.title)
   end
 
-  it 'can create cart_items'
+  it "can sum all subtotals" do
+    exp_1 = create(:experience)
+    exp_2 = create(:experience)
+    cart = Cart.new({ "1" => 2, "2" => 3})
+    experiences = cart.cart_experiences
+    total = cart.total
+    expect(total).to eq((exp_1.cost * 2) + (exp_2.cost * 3))
 
+  end
 end
