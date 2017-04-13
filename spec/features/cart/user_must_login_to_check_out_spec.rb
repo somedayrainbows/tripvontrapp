@@ -3,7 +3,7 @@ require 'rails_helper'
 
 
 describe "User with items in their cart wants to checkout" do
-  let(:user) { create(:user) }
+  # let(:user)  { create(:user) }
   before do
     experience = create(:experience)
 
@@ -35,6 +35,8 @@ describe "User with items in their cart wants to checkout" do
       fill_in "Name", with: user.name
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
+
+
 
       expect(page).to have_link("checkout")
     end
