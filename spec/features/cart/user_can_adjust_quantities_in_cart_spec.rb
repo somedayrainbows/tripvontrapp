@@ -7,7 +7,7 @@ RSpec.feature 'User can adjust experience quantities in cart' do
 
     visit cart_path
 
-    within("quantity") do
+    within("tbody tr: nth-child (2) td.quantity") do
       expect(page).to have_content(1)
     end
 
