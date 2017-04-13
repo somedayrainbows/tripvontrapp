@@ -9,8 +9,6 @@ FactoryGirl.define do
   end
 
 #creating factories with associations in the docs
-
-
   sequence :title do |n|
     n
   end
@@ -28,5 +26,19 @@ FactoryGirl.define do
     n
   end
 
+  factory :user do |n|
+    name
+    email
+    password "password"
+    role 1
+  end
+  # 
+  # sequence :name do |n|
+  #   n
+  # end
+
+  sequence :email do |n|
+    "person#{n}@awesome.com"
+  end
 
 end

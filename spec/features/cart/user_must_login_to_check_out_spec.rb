@@ -3,13 +3,13 @@ require 'rails_helper'
 
 
 describe "User with items in their cart wants to checkout" do
-  # let(:user)  { create(:user) }
+  let(:user)  { create(:user) }
   before do
     experience = create(:experience)
 
     visit experiences_path
-    click_on "Add to cart"
 
+    click_on "Add to cart"
     click_on "view_cart"
   end
 
@@ -36,11 +36,31 @@ describe "User with items in their cart wants to checkout" do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
 
-
+      visit '/cart'
 
       expect(page).to have_link("checkout")
+      #within navbar
+      expect(page).to have_link("Logout")
+    end
+
+    it "allows the user to logout from the cart page" do
+      user = current_user
+
+      visit '/cart'
+
+      click_on "Logout"
+
+      expect(current_path).to eq('/cart')
+      expect(page).to have_link("Create Account")
+      expect(page).to_not have_link("checkout")
+
+      #within navbar
+      expect(page).to have_link("Login")
     end
   end
+
+
+
 end
 
 
