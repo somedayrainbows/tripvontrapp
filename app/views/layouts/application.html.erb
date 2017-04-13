@@ -40,8 +40,9 @@
                         <li><a href="categories">Browse by Category</a></li>
                         <li><a href="#">Contact</a></li>
                         <li id="view_cart"><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (<%= @cart.total_count %>)</a></li>
-                        <li><%= link_to "Log out", logout_path, method: :delete if session[:user_id] %></li>
-                        <li><%= link_to "Log in", login_path unless session[:user_id] %></li>
+                        <li><%= link_to "Logout", logout_path, method: :delete if session[:user_id] %></li>
+                        <li><%= link_to "Login", login_path unless session[:user_id] %></li>
+
                           <!-- <#% if current_user ....%#>  LINK TO AUTH NAV, check gifgenerator, and in show for cart too -->
                     </ul>
                 </div>
