@@ -4,7 +4,7 @@ RSpec.feature 'User can adjust experience quantities in cart' do
   scenario 'user can increase quantities'do
     create(:experience)
     CartExperience.new("1", 1)
-    # As a I user, and I visit the cart_path
+
     visit cart_path
 
     within("quantity") do
