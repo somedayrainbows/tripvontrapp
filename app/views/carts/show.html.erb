@@ -23,12 +23,12 @@
 								</div>
 							</td>
 							<td data-th="Price"><%= experience.cost %></td>
-							<td data-th="Quantity">
+							<td id="quantity" data-th="Quantity">
 								<input type="number" class="form-control text-center" value="<%= experience.quantity %>">
                 <%= button_to "+", cart_path(experience_id: experience.id, type: "increase"), class: "btn-sm", method: :put %>
                 <%= button_to "-", cart_path(experience_id: experience.id, type: "decrease"), class: "btn-sm", method: :put %>
 								</td>
-							<td data-th="Subtotal" class="text-center"><%= experience.subtotal %></td>
+							<td id="subtotal" data-th="Subtotal" class="text-center"><%= experience.subtotal %></td>
 							<td class="actions" data-th="">
 								<%= button_to "remove", '/cart/remove', method: :put, params: [experience_id: experience.id], class: "btn btn-danger btn-sm" %>
 							</td>
@@ -43,11 +43,10 @@
 							<td><a href="/experiences" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Totat: $<%= @cart.total %></strong></td>
-							<td><a href="#" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a></td>
+							<td>
 								<% if current_user %>
 									<a href="#" id="checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
 								<% else %>
-									<%= link_to "Login", login_path, class:"btn btn-success btn-block" %>
 									<%= link_to "Create Account", new_user_path, class: "btn btn-success btn-block" %>
 								<% end %>
 							</td>
