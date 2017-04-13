@@ -34,6 +34,32 @@ body {
     width: 100%;
 }
 
+.home_thumb {
+    width: 320px;
+    height: 150px;
+    margin: 0 auto;
+}
+.home_thumb img.wide {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+}
+.home_thumb img.tall {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+}​
+
+/*.home_thumb {
+    width: 320px;
+    height: 150px;
+    overflow: hidden;
+}
+
+.home_thumb img {
+    width: 100%;
+}*/
+
 .ratings {
     padding-right: 10px;
     padding-left: 10px;
