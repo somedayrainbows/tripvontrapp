@@ -31,7 +31,7 @@ describe "User with items in their cart wants to checkout" do
     it "allows the user to checkout" do
       visit '/cart'
 
-      expect(page).to have_link("checkout")
+      expect(page).to have_link("Checkout")
       expect(page).to have_link("Logout")
     end
   end

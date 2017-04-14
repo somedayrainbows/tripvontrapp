@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.feature 'Existing user can have multiple orders' do
-  scenario 'they can can see all orders belonging to them' do
+  xscenario 'they can can see all orders belonging to them' do
     # As an Authenticated User
     # When I visit "/orders"
     # Then I should see all orders belonging to me and no other orders
