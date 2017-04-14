@@ -10,10 +10,14 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/dashboard', to: 'users#show'
+  get '/orders', to: 'orders#index'
 
   resources :users, only: [:new, :create]
+  resources :orders, only: [:index]
+
   resources :categories, only: [:index]
   resources :experiences, only: [:index, :show]
+
 
 
 

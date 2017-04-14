@@ -1,43 +1,27 @@
 require 'rails_helper'
 
-describe 'User visits root' do
-  scenario 'they click a link to login and are redirected to a login page where they see the form to create a new account' do
-    # As a visitor
-    # When I visit "/"
-    visit "/"
-    # Then I should see a link for "Login"
-    expect(page).to have_content("Login")
-    # And when I click "Login"
-    click_link "Login"
-    # And I should be on the "/login" page
+describe 'User visits login page' do
+  let(:user) { build(:user) }
+  scenario 'and sees a Create New Account link' do
+    visit login_path
 
-    visit "/login"
-
-    expect(current_path).to eq(login_path)
-
-    # I should see a place to insert my credentials to login
-    # And I should see a link to "Create Account"
-    expect(page).to have_content("Name")
-    expect(page).to have_content("Email")
-    expect(page).to have_content("Password")
-    expect(page).to have_button("Login")
-    expect(page).to have_content("Create New Account")
+    expect(page).to have_link("Create New Account")
   end
-end
 
-describe "user visits login page" do
-  scenario "they can create a new account and login" do
-    # As a visitor
-    # When I visit "/login
-    visit "/login"
-    # And when I click link "Create Account"
-    click_on "Create New Account"
+  scenario 'and visits the new account page' do
+    visit login_path
+    click_link('Create New Account')
 
     expect(current_path).to eq(new_user_path)
-    # And I fill in my desired credentials
-    fill_in "Name", with: "Natbot"
-    fill_in "Email", with: "nat@nat.com"
-    fill_in "Password", with: "password"
+  end
+
+  scenario "and signs up for a new account" do
+    visit login_path
+    click_on "Create New Account"
+
+    fill_in "Name", with: user.name
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
     click_on "Create Account"
 
 
@@ -45,18 +29,14 @@ describe "user visits login page" do
     # Then my current page should be "/dashboard"
     # And I should see a message in the navbar that says "Logged in as SOME_USER"
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Logged in as Natbot. Welcome!")
+    expect(page).to have_content("Logged in as #{user.name}. Welcome!")
     # And I should see my profile information
     expect(page).to have_content("Profile Information")
-    expect(page).to have_content("User: Natbot")
-    expect(page).to have_content("Email: nat@nat.com")
+    expect(page).to have_content("User: #{user.name}")
+    expect(page).to have_content("Email: #{user.email}")
     # And I should not see a link for "Login"
     expect(page).to_not have_content("Login")
     # And I should see a link for "Logout"
     expect(page).to have_content("Logout")
-
-    click_on "Logout"
-
-    expect(current_path).to eq(login_path)
   end
 end

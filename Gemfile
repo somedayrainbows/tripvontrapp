@@ -16,7 +16,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-gem 'rails_12factor'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -33,6 +32,10 @@ end
 group :development do
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
