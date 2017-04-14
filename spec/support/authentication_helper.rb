@@ -8,7 +8,7 @@ module AuthenticationHelper
   end
 
   def logout
-    visit root_path
+    # visit root_path
     click_link 'Logout'
   end
 
