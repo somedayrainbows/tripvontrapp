@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.all
+    user = current_user
+    if current_user
+      @orders = user.orders
+    else
+      redirect_to "/login"
+    end
   end
+
 end

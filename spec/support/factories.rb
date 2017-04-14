@@ -46,7 +46,7 @@ FactoryGirl.define do
   end
 
   factory :order do |n|
-    status "ordered"
+    sequence(:status) { |n| "#{n} status" }
     total_price 10
     user
   end
