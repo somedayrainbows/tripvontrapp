@@ -2,7 +2,7 @@ require 'rails_helper'
 
 
 describe "visitor views all experiences" do
-  xscenario "when they visit the experience index" do
+  scenario "when they visit the experience index" do
 
       experience = build(:experience)
       visit categories_path
