@@ -22,7 +22,6 @@ class CartsController < ApplicationController
     elsif type == "decrease"
       @cart.subtract_experience(experience.id)
       session[:cart] = @cart.contents
-      end
     end
     redirect_back(fallback_location: cart_path)
   end

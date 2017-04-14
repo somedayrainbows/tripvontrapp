@@ -5,6 +5,7 @@ FactoryGirl.define do
     description
     cost 25
     city "Denver"
+    image_path "image"
     categories { create_list(:category, 2) }
   end
 
