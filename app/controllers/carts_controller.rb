@@ -29,7 +29,7 @@ class CartsController < ApplicationController
   def remove
     experience= Experience.find(params[:experience_id])
     @cart.remove_experience(params[:experience_id])
-    flash[:danger] = "Successfully removed <a href='/experiences/#{experience.id}' > #{experience.title}</a> from your cart."
+    flash[:success] = "Successfully removed <a href='/experiences/#{experience.id}' > #{experience.title}</a> from your cart."
     redirect_to cart_path
   end
 end

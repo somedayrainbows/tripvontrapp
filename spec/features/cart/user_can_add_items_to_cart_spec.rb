@@ -5,7 +5,9 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
     exp = create(:experience)
 
     visit experiences_path
-    expect(page).to have_button("Add to cart")
+    within("#view_cart") do
+      expect(page).to have_link("Cart")
+    end
 
     click_button "Add to cart"
     expect(page).to have_content("1 #{exp.title} added to your cart.")
@@ -46,24 +48,25 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
 
     expect(current_path).to eq "/cart"
 
-# page.should have_css('img', text: "image1.jpg")
-# need to add image column to database
-# And I should see a small image, title, description and price for the item I just added
-      within("image_path") do
-        expect(page).to have_content(exp.image_path)
-      end
+    # within(".image_path") do
+    #   expect(page).to have_content(exp.image_path)
+    # end
+
+    within("tbody tr:nth-child(1)") do
       expect(page).to have_content(exp.title)
       expect(page).to have_content(exp.description)
       expect(page).to have_content(exp.cost)
+    end
 
-      within ("td") do
-        expect(page).to have_button("+")
-        expect(page).to have_button("-")
-      end
 
-      # And there should be a "total" price for the cart that should be the sum of all items in the cart
+    within ("tbody tr:nth-child(1) td.quantity") do
+      expect(page).to have_button("+")
+      expect(page).to have_button("-")
+    end
+
+    within("tfoot") do
       expect(page).to have_content("Total:")
       expect(page).to have_content("25")
-
+    end
   end
 end
