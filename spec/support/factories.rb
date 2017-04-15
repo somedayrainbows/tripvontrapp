@@ -12,20 +12,20 @@ FactoryGirl.define do
 
 #creating factories with associations in the docs
   sequence :title do |n|
-    n
+    "title#{n}"
   end
 
   sequence :description do |n|
-    n
+    "description#{n}"
   end
 
 
   factory :category do
-    name
+    "category#{name}"
   end
 
   sequence :name do |n|
-    n
+    "name#{n}"
   end
 
   factory :user do |n|
