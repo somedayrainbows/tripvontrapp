@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get '/orders', to: 'orders#index'
 
   resources :users, only: [:new, :create]
-  resources :orders, only: [:index, :show, :new]
+  resources :orders, only: [:index, :show, :create]
 
   resources :categories, only: [:index]
   resources :experiences, only: [:index, :show]
