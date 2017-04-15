@@ -1,0 +1,15 @@
+<h1>Order Detail</h1>
+
+Date created: <%= @order.created_at %><br>
+Status: <%= @order.status %><br>
+Date status updated: <%= @order.updated_at %><br>
+Total price: $<%= @order.total_price %><br><br>
+
+<% @order.experiences.each do |experience| %>
+  <%= link_to experience.title, experience_path(experience) %>
+<% end %>
+
+<% @order.experiences_orders.each do |experience_order| %>
+  <%= experience_order.quantity %>
+  <%= experience_order.subtotal %>
+<% end %>
