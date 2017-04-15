@@ -17,8 +17,8 @@ RSpec.feature "User can check out" do
 
     expect(current_path).to eq(orders_path)
     expect(@user.orders.count).to eq(1)
-    expect(page).to have_content(@user.orders.first.experiences_orders.first.title)
-    expect(page).to have_content(@user.orders.last.experiences_orders.last.title)
+    expect(page).to have_content("Order was successfully placed.")
+    expect(page).to have_content(@user.orders.last.status)
 
   end
 
