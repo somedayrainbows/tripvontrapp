@@ -45,7 +45,9 @@
 							<td class="hidden-xs text-center"><strong>Total: $<%= @cart.total %></strong></td>
 							<td>
 								<% if current_user %>
-									<a href="#" class="checkout" class="btn btn-success btn-block">Checkout <i class="fa fa-angle-right"></i></a>
+								<%= link_to "Checkout", new_order_path, class: "checkout btn btn-success btn-block" do %>
+								<i class="fa fa-angle-right"></i>
+								<% end %>
 								<% else %>
 									<%= link_to "Create Account", new_user_path, class: "btn btn-success btn-block" %>
 								<% end %>
