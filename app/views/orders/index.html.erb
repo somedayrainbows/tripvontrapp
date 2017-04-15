@@ -1,11 +1,15 @@
 <h1>All Orders</h1>
-<p>
+<div class="orders">
 <% @orders.each do |order| %>
-  Date created: <%= order.created_at %><br>
-  Status: <%= order.status %><br>
-  Date status updated: <%= order.updated_at %><br>
-  Total price: $<%= order.total_price %><br><br>
+  <div>
+    Date created: <%= link_to order.created_at, order_path(order) %><br>
+    Status: <%= link_to order.status, order_path(order) %><br>
+    Date status updated: <%= order.updated_at %><br>
+    Total price: $<%= order.total_price %><br><br>
+  </div>
   <% end %>
-</p>
+</div>
 
+<p>
 <%= link_to "Check out All Experiences", experiences_path %>
+</p>

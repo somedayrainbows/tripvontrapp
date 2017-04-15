@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413223503) do
+ActiveRecord::Schema.define(version: 20170415013127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,20 @@ ActiveRecord::Schema.define(version: 20170413223503) do
     t.string   "image_path"
   end
 
+  create_table "experiences_orders", force: :cascade do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "cost"
+    t.integer  "quantity"
+    t.integer  "subtotal"
+    t.integer  "order_id"
+    t.integer  "experience_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["experience_id"], name: "index_experiences_orders_on_experience_id", using: :btree
+    t.index ["order_id"], name: "index_experiences_orders_on_order_id", using: :btree
+  end
+
   create_table "orders", force: :cascade do |t|
     t.string   "status"
     t.integer  "total_price"
@@ -59,5 +73,7 @@ ActiveRecord::Schema.define(version: 20170413223503) do
 
   add_foreign_key "experience_categories", "categories"
   add_foreign_key "experience_categories", "experiences"
+  add_foreign_key "experiences_orders", "experiences"
+  add_foreign_key "experiences_orders", "orders"
   add_foreign_key "orders", "users"
 end
