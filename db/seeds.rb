@@ -15,7 +15,7 @@ family_friendly = Category.create(name: "Family Friendly")
 good_for_groups = Category.create(name: "Good for Groups")
 
 
-Experience.create(title: "Public Art Walking Tour", description: "Denver is home to an eclectic and fascinating public art collection that involves much more than its poster child--a red-eyed stallion sculpture installed at Denver International Airport known for falling on and killing its artist (Luis Jimenez) shortly before he finished the piece. Your guide will take you on a walking tour of several installation sites around downtown Denver and share some history and information about each piece. Enjoy!", cost: 25, city: "Denver", image_path: "https://aamd.org/sites/default/files/styles/document/public/from-the-field-story/PhillipsInterior_Murray.jpg?itok=lgYhiuuN").categories << [city_life, arts_and_culture, good_for_groups]
+Experience.create(title: "Public Art Walking Tour", description: "Denver is home to an eclectic and fascinating public art collection that involves much more than its poster child--a red-eyed stallion sculpture installed at Denver International Airport known for falling on and killing its artist (Luis Jimenez) shortly before he finished the piece. Your guide will take you on a walking tour of several installation sites around downtown Denver and share some history and information about each piece. Enjoy!", cost: 25, city: "Denver", image_path: "https://aamd.org/sites/default/files/styles/document/public/from-the-field-story/PhillipsInterior_Murray.jpg?itok=lgYhiuuN", status: "retired").categories << [city_life, arts_and_culture, good_for_groups]
 
 
 
