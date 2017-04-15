@@ -7,7 +7,11 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:success] = "Logged in as #{@user.name}. Welcome!"
-      redirect_to dashboard_path
+
+      redirect_to dashboard_path if current_user.admin? == false 
+
+      redirect_to admin_dashboard_index_path if current_user.admin?
+
     else
       flash[:danger] = "Invalid user/password combination."
       render :new

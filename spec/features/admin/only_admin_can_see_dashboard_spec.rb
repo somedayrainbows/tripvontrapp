@@ -1,11 +1,12 @@
+require  'rails_helper'
 
 
+RSpec.feature "User logs in as admin " do
+  scenario "Admin is redirected to admin dashboard" do
+    user = create(:user)
+    user.update(role: 1)
+    login(user)
 
-
-
-
-
-# As an Authenticated User
-# I cannot view another user’s private data (current or past orders, etc)
-# I cannot view the administrator screens or use admin functionality
-# I cannot make myself an admin
+    expect(current_path).to eq(admin_dashboard_index_path)
+  end
+end
