@@ -21,7 +21,11 @@ end
 
   def show
     user = current_user
-    @order = user.orders.find(params[:id])
+    if user.admin?
+      @order = Order.find(params[:id])
+    else
+      @order = user.orders.find(params[:id])
+    end
   end
 
 
