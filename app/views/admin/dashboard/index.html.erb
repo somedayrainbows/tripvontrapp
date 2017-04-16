@@ -1,1 +1,37 @@
 <h1>Admin Dashboard </h1>
+
+
+
+
+<details open>
+  <summary>Orders summary by status</summary>
+   <p>Ordered: <%= @orders.where(status: "Ordered").count %></p>
+   <p>Paid: <%= @orders.where(status: "Paid").count %></p>
+   <p>Cancelled: <%=@orders.where(status: "Cancelled").count %></p>
+   <p>Completed: <%=@orders.where(status: "Completed").count %></p>
+</details>
+<hr>
+  <p>Filter orders by status<br>
+    <%= link_to "ORDERED", admin_dashboard_index_path(status: "Ordered")  %>  |
+    <%= link_to "PAID", admin_dashboard_index_path(status: "Paid")  %>  |
+    <%= link_to "COMPLETED", admin_dashboard_index_path(status: "Completed")  %>  |
+    <%= link_to "CANCELLED", admin_dashboard_index_path(status: "Cancelled")  %>  |
+  </p>
+
+
+<div class="order-table">
+  <table style=“width:100%“>
+   <tr>
+     <th>Order number</th>
+     <th>Order status</th>
+     <th>Update status</th>
+   </tr>
+   <% @orders.each do |order| %>
+   <tr>
+     <td><%= link_to order.id, order_path(order) %></td>
+     <td><%= order.status %></td>
+     <!-- <td><%#=# order.update(...) %></td> -->
+   </tr>
+   <% end %>
+  </table>
+</div>

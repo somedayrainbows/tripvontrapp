@@ -1,12 +1,28 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
-user = User.create(name: "admin", email: "admin@admin.com", password: "admin", role: 1)
+
+admin = User.create(name: "admin", email: "admin@admin.com", password: "admin", role: 1)
+
+
+user1 = User.create(name: "user1", email: "user1@user1.com", password: "user1", role: 0)
+order1a = user1.orders.create(id: 1, status: "Paid")
+order1b = user1.orders.create(id: 2, status: "Paid")
+order1c = user1.orders.create(id: 11, status: "Ordered")
+
+user2 = User.create(name: "user2", email: "user2@user2.com", password: "user2", role: 0)
+order2a = user2.orders.create(id: 3, status: "Cancelled")
+order2b = user2.orders.create(id: 4, status: "Completed")
+
+user3 = User.create(name: "user3", email: "user3@user3.com", password: "user3", role: 0)
+order3a = user3.orders.create(id: 5, status: "Paid")
+order3b = user3.orders.create(id: 6, status: "Completed")
+
+user4 = User.create(name: "user4", email: "user4@user4.com", password: "user4", role: 0)
+order4a = user4.orders.create(id: 7, status: "Ordered")
+order4b = user4.orders.create(id: 8, status: "Paid")
+order4c = user4.orders.create(id: 9, status: "Completed")
+order4d = user4.orders.create(id: 10, status: "Cacncelled")
+
+
 
 city_life = Category.create(name: "City Life")
 food_and_drink = Category.create(name: "Food and Drink")

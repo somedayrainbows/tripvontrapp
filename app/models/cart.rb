@@ -15,10 +15,9 @@ class Cart
   end
 
   def subtract_experience(experience_id)
-    contents[experience_id.to_s] ||= 0
-    contents[experience_id.to_s] -= 1
+    contents[experience_id.to_s] -= 1 unless
+      contents[experience_id.to_s] == 0
   end
-
 
   def count_of(experience_id)
     contents[experience_id.to_s]
@@ -39,4 +38,11 @@ class Cart
     cart_collection.reduce(0) { |sum, exp| sum + exp.subtotal }
   end
 
+  def check_quantity_change(type, experience)
+    if type == "increase"
+      add_experience(experience.id)
+    elsif type == "decrease"
+      subtract_experience(experience.id)
+    end
+  end
 end
