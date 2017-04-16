@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
 
   def index
-    @experiences = Experience.all
+    @random_experiences = Experience.all.sample(6)
   end
 
 end

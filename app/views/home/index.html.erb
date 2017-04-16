@@ -1,15 +1,8 @@
-<!-- <div class="jumbotron" style="background-image: url(https://www.flairtradetravels.org/assets/travel_pic_1200x800.jpg); padding-top: 650px; width: 100%;  background-position: center;">
-        <div class="container">
-          <p style="position: absolute; top: 120px; left: 75px; width: 100px;
-  height: 30px;"><a class="btn btn-danger btn-lg" href="experiences" role="button">Let's Go!</a></p>
-        </div>
-      </div> -->
-
-<!-- <img src="https://www.flairtradetravels.org/assets/travel_pic_1200x800.jpg" width="100%"> -->
-
 <div class="container">
     <div class="row">
         <div class="col-md-16">
+          <!-- main container div -->
+          <!-- carousel begins -->
             <div class="row carousel-holder">
                 <div class="col-md-12">
                     <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -37,38 +30,18 @@
                         </a>
                     </div>
                 </div>
+                <!-- carousel end -->
             </div>
-            <div class="row">
-              <div class="col-sm-4 col-lg-4 col-md-4">
-                  <div class="thumbnail">
-                    <img src="https://www.flairtradetravels.org/assets/denver_art_tour.jpg" alt="">
-                    </div>
-                      <div class="caption">
-                          <h4 class="pull-right">$ <%= @experiences.first.cost %> </h4>
-                          <h4><a href="#"> <%= @experiences.first.title %></a>
-                          </h4>
-                          <p> <%= @experiences.first.description[0..137] %><a href="#">... Learn more</a></p>
-                      </div>
-                      <!-- <div class="ratings">
-                          <p class="pull-right">15 reviews</p>
-                          <p>
-                              <span class="glyphicon glyphicon-star"></span>
-                              <span class="glyphicon glyphicon-star"></span>
-                              <span class="glyphicon glyphicon-star"></span>
-                              <span class="glyphicon glyphicon-star"></span>
-                              <span class="glyphicon glyphicon-star"></span>
-                          </p>
-                      </div> -->
-                  </div>
-                </div>
+            <!-- grid section -->
+            <% @random_experiences.each do |rando|  %>
                 <div class="col-sm-4 col-lg-4 col-md-4">
                     <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
+                        <%= image_tag "#{rando.image_path}", class: "thumbnail", size: "304x236" %>
                         <div class="caption">
-                            <h4 class="pull-right">$64.99</h4>
-                            <h4><a href="#">Second Product</a>
+                            <h4 class="pull-right">$<%= rando.cost %></h4>
+                            <h4><a href="#"><%= rando.title[0..30] %></a>
                             </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <p><%= rando.description[0..137] %><a href="#">... Learn more</a></p>
                         </div>
                         <!-- <div class="ratings">
                             <p class="pull-right">12 reviews</p>
@@ -82,77 +55,10 @@
                         </div> -->
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$74.99</h4>
-                            <h4><a href="#">Third Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <!-- <div class="ratings">
-                            <p class="pull-right">31 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$84.99</h4>
-                            <h4><a href="#">Fourth Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <!-- <div class="ratings">
-                            <p class="pull-right">6 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <div class="thumbnail">
-                        <img src="http://placehold.it/320x150" alt="">
-                        <div class="caption">
-                            <h4 class="pull-right">$94.99</h4>
-                            <h4><a href="#">Fifth Product</a>
-                            </h4>
-                            <p>This is a short description. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                        <!-- <div class="ratings">
-                            <p class="pull-right">18 reviews</p>
-                            <p>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star"></span>
-                                <span class="glyphicon glyphicon-star-empty"></span>
-                            </p>
-                        </div> -->
-                    </div>
-                </div>
-                <div class="col-sm-4 col-lg-4 col-md-4">
-                    <h4><a href="#">Want to become a guide?</a>
-                    </h4>
-                    <p>If you are interested in becoming a guide, then check out <a target="_blank" href="#">our guide information section</a> and learn more about what it means to be a TripVonTrapp guide.</p>
-                    <a class="btn btn-primary" target="_blank" href="#">Get Started</a>
-                </div>
+                <% end %>
+
             </div>
         </div>
     </div>
 </div>
-<!-- /.container -->
+<!-- /.container ends -->
