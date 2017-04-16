@@ -16,13 +16,8 @@ class CartsController < ApplicationController
   def update
     type = params[:type]
     experience = Experience.find(params[:experience_id])
-    if type == "increase"
-      @cart.add_experience(experience.id)
-      session[:cart] = @cart.contents
-    elsif type == "decrease"
-      @cart.subtract_experience(experience.id)
-      session[:cart] = @cart.contents
-    end
+    @cart.check_quantity_change(type, experience)
+    session[:cart] = @cart.contents
     redirect_back(fallback_location: cart_path)
   end
 
