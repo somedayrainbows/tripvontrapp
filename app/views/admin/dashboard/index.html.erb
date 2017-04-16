@@ -1,8 +1,5 @@
 <h1>Admin Dashboard </h1>
 
-
-
-
 <details open>
   <summary>Orders summary by status</summary>
    <p>Ordered: <%= @orders.where(status: "Ordered").count %></p>
@@ -30,7 +27,9 @@
    <tr>
      <td><%= link_to order.id, order_path(order) %></td>
      <td><%= order.status %></td>
-     <!-- <td><%#=# order.update(...) %></td> -->
+     <td><%= link_to "Cancel order #{order.id}", order_path(order, status: "Cancelled"), method: :put if order.status == "Paid" || order.status == "Ordered" %>
+     <%= link_to "Mark order #{order.id} paid", order_path(order, status: "Paid"), method: :put if order.status == "Ordered" %>
+     <%= link_to "Mark order #{order.id} complete", order_path(order, status: "Completed"), method: :put if order.status == "Paid" %> </td>
    </tr>
    <% end %>
   </table>
