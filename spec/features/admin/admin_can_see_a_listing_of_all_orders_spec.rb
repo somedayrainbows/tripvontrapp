@@ -69,41 +69,26 @@ RSpec.feature "As a logged in admin" do
   end
 
   scenario "when admin vists dashboard, can filter orders by status type" do
-
     click_on "ORDERED"
 
     expect(page).to have_content(@order1a.status)
     within(".order-table") do
       expect(page).to_not have_content(@order1b.status)
     end
-    # expect(page).to have_link("PAID")
-    # expect(page).to have_link("CANCELLED")
-    # expect(page).to have_link("COMPLETED")
-  end
-  # And I can filter orders to display by each status type ("Ordered", "Paid", "Cancelled", "Completed")
-
-
-  xscenario "when admin vists dashboard, can view links to update status of each order" do
-
-    visit dashboard_path
-
-    expect(page).to have_link("Cancel #{@order1a.id}")
-    expect(page).to have_link("Mark #{@order1a} Paid")
-    expect(page).to have_link("Cancel #{@order1b}")
-    expect(page).to have_link("Mark #{@order1b} as Completed")
-    expect(page).to have_link("Cancel #{@order2a}")
-    expect(page).to have_link("Mark #{@order2a} as Completed")
   end
 
-  xscenario "when admin visits dashboard, can change status of incomplete orders" do
-    visit dashboard_path
-    click_on "Mark #{@order1a} Paid"
+  scenario "when admin vists dashboard, can view links to update status of each order" do
+    expect(page).to have_link("Cancel order #{@order1a.id}")
+    expect(page).to have_link("Mark order #{@order1a.id} paid")
+    expect(page).to have_link("Cancel order #{@order1b.id}")
+    expect(page).to have_link("Mark order #{@order1b.id} complete")
+  end
 
-    expect(@order1a.status).to eq("paid")
-    expect(page).to have_content("Paid, 3")
+  scenario "when admin visits dashboard, can change status of incomplete orders" do
+    expect(page).to have_content("Paid: 2")
+
+    click_on "Mark order #{@order1a.id} paid"
+
+    expect(page).to have_content("Paid: 3")
   end
 end
-# And I have links to transition between statuses
-# - I can click on "cancel" on individual orders which are "paid" or "ordered"
-# - I can click on "mark as paid" on orders that are "ordered"
-# - I can click on "mark as completed" on orders that are "paid"
