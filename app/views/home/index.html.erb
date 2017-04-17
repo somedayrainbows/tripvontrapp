@@ -41,9 +41,9 @@
                         <%= image_tag "#{rando.image_path}", class: "thumbnail", size: "304x236" %>
                         <div class="caption">
                             <h4 class="pull-right">$<%= rando.cost %></h4>
-                            <h4><a href="#"><%= rando.title[0..30] %></a>
+                            <h4><%= link_to rando.title[0..30], experience_path(rando) %></a>
                             </h4>
-                            <p><%= rando.description[0..137] %><a href="#">... Learn more</a></p>
+                            <p><%= rando.description[0..137] %>... <%= link_to "Learn more", experience_path(rando) %></p>
                         </div>
                         <!-- <div class="ratings">
                             <p class="pull-right">12 reviews</p>

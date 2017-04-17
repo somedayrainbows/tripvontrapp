@@ -1,4 +1,8 @@
-<h1>Admin Dashboard </h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <h1 align="center">Admin Dashboard </h1>
+          <hr>
 
 <details open>
   <summary>Orders summary by status</summary>
@@ -19,9 +23,9 @@
 <div class="order-table">
   <table style=“width:100%“>
    <tr>
-     <th>Order number</th>
-     <th>Order status</th>
-     <th>Update status</th>
+     <th style="width:25%">Order number</th>
+     <th style="width:25%">Order status</th>
+     <th style="width:50%">Update status</th>
    </tr>
    <% @orders.each do |order| %>
    <tr>
