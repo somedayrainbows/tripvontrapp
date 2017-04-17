@@ -11,4 +11,8 @@ class Order < ActiveRecord::Base
                                      experience_id: cart_experience.id)
     end
   end
+
+  def total_price
+    self.experiences_orders.reduce(0) { |sum, exp| sum+= exp.subtotal }
+  end
 end
