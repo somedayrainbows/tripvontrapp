@@ -1,9 +1,19 @@
-<h1>Experiences in the <%= @category.name %> category</h1>
-
-<% @category.experiences.each do |experience| %>
-  <h2><%= link_to "#{experience.title}", experience_path(experience) %></h2>
-  <%= image_tag "#{experience.image_path}", class: "img-responsive", size: "608x472" %>
-      <p>Cost per person: $<%= experience.cost %></p>
-    <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" %><br>
-
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <h1 align="center">Experiences in the <%= @category.name %> category</h1>
+          <hr>
+          <% @category.experiences.each do |experience| %>
+            <div class="col-sm-6 col-lg-6 col-md-6">
+              <div class="thumbnail">
+                <h2><%= link_to "#{experience.title}", experience_path(experience) %></h2>
+                <%= image_tag "#{experience.image_path}", class: "thumbnail", size: "304x236" %>
+                <p>Cost per person: $<%= experience.cost %></p>
+                <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %><br>
+                <%= "This experience is no longer available. It has been retired. Join our email list to be notified when this experience is reactivated." if experience.status == "retired" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+</div>
