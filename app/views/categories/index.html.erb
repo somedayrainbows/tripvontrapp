@@ -1,9 +1,10 @@
-<h1>Browse by Interest</h1>
 
 
 <div class="container">
     <div class="row">
         <div class="col-md-16">
+          <h1 align="center">Browse by Interest</h1>
+          <hr>
           <!-- main container div -->
           <!-- carousel begins -->
             <div class="row carousel-holder">
@@ -16,12 +17,12 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="slide-image" src="https://www.flairtradetravels.org/assets/arch-denver-tour.png" alt="">
+                                <a href="/"><img class="slide-image" src="https://www.flairtradetravels.org/assets/arch-denver-tour.png" alt=""></a>
                             </div>
                             <%  @categories.each do |category| %>
                             <div class="item">
-                                <h2><%= link_to "#{category.name}", category_path(category) %></h2>
-                                <%= image_tag "#{category.image_path}", size: "810X450" %></h2>
+                                <a href="/#{category.name}"><h2 align="center"><%= link_to "#{category.name}", category_path(category) %>
+                                <%= image_tag "#{category.image_path}", size: "810X450" %></h2></a>
                             </div>
                             <% end %>
                         </div>
