@@ -1,15 +1,32 @@
-<h1>Order Detail</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <h1 align="center">Order Detail</h1>
+          <hr>
 
 Date created: <%= @order.created_at %><br>
 Status: <%= @order.status %><br>
 Date status updated: <%= @order.updated_at %><br>
 Total price: $<%= @order.total_price %><br><br>
 
-<% @order.experiences.each do |experience| %>
-  <%= link_to experience.title, experience_path(experience) %>
+<div class="order-table">
+  <table style=“width:100%“>
+   <tr>
+     <th style="width:50%">Title</th>
+     <th>&nbsp;</th>
+     <th style="width:15%">Quantity</th>
+     <th style="width:20%">Subtotal</th>
+   </tr>
+     <% @order.experiences_orders.each do |experience_order| %>
+   <tr>
+     <td><%= link_to experience_order.experience.title, experience_path(experience_order.experience) %></td>
+     <td>&nbsp;</td>
+     <td><%= experience_order.quantity %></td>
+     <td>$<%= experience_order.subtotal %></td>
+   </tr>
 <% end %>
+</table>
 
-<% @order.experiences_orders.each do |experience_order| %>
-  <%= experience_order.quantity %>
-  <%= experience_order.subtotal %>
-<% end %>
+</div>
+</div>
+</div>
