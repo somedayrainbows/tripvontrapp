@@ -1,5 +1,36 @@
 <h1>Browse by Interest</h1>
 
-<%  @categories.each do |category| %>
-  <h2><%= link_to "#{category.name}", category_path(category) %></h2>
-<% end %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <!-- main container div -->
+          <!-- carousel begins -->
+            <div class="row carousel-holder">
+                <div class="col-md-12">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img class="slide-image" src="https://www.flairtradetravels.org/assets/arch-denver-tour.png" alt="">
+                            </div>
+                            <%  @categories.each do |category| %>
+                            <div class="item">
+                                <h2><%= link_to "#{category.name}", category_path(category) %></h2>
+                                <%= image_tag "#{category.image_path}", size: "810X450" %></h2>
+                            </div>
+                            <% end %>
+                        </div>
+
+                        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                        </a>
+                        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
