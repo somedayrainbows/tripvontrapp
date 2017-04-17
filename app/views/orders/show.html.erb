@@ -3,7 +3,8 @@
         <div class="col-md-16">
           <h1 align="center">Order Detail</h1>
           <hr>
-
+User: <%= @order.user.name %>
+Email: <%= @order.user.email %>
 Date created: <%= @order.created_at %><br>
 Status: <%= @order.status %><br>
 Date status updated: <%= @order.updated_at %><br>

@@ -1,27 +1,5 @@
 
 
-admin = User.create(name: "admin", email: "admin@admin.com", password: "admin", role: 1)
-
-
-user1 = User.create(name: "user1", email: "user1@user1.com", password: "user1", role: 0)
-order1a = user1.orders.create(status: "Paid")
-order1b = user1.orders.create(status: "Paid")
-order1c = user1.orders.create(status: "Ordered")
-
-user2 = User.create(name: "user2", email: "user2@user2.com", password: "user2", role: 0)
-order2a = user2.orders.create(status: "Cancelled")
-order2b = user2.orders.create(status: "Completed")
-
-user3 = User.create(name: "user3", email: "user3@user3.com", password: "user3", role: 0)
-order3a = user3.orders.create(status: "Paid")
-order3b = user3.orders.create(status: "Completed")
-
-user4 = User.create(name: "user4", email: "user4@user4.com", password: "user4", role: 0)
-order4a = user4.orders.create(status: "Ordered")
-order4b = user4.orders.create(status: "Paid")
-order4c = user4.orders.create(status: "Completed")
-order4d = user4.orders.create(status: "Cancelled")
-
 
 
 city_life = Category.create(name: "City Life", image_path: "https://www.flairtradetravels.org/assets/city_life.jpg")
@@ -33,9 +11,10 @@ family_friendly = Category.create(name: "Family Friendly", image_path: "https://
 good_for_groups = Category.create(name: "Good for Groups", image_path: "https://www.flairtradetravels.org/assets/good_for_groups.jpg")
 
 
-Experience.create(title: "Public Art Walking Tour", description: "Denver is home to an eclectic and fascinating public art collection that involves much more than its poster child--a red-eyed stallion sculpture installed at Denver International Airport known for falling on and killing its artist (Luis Jimenez) shortly before he finished the piece. Your guide will take you on a walking tour of several installation sites around downtown Denver and share some history and information about each piece. Enjoy!", cost: 25, city: "Denver", image_path: "https://www.flairtradetravels.org/assets/denver_art_walk_photo.png", status: "retired").categories << [city_life, arts_and_culture, good_for_groups]
+exp1 = Experience.create(title: "Public Art Walking Tour", description: "Denver is home to an eclectic and fascinating public art collection that involves much more than its poster child--a red-eyed stallion sculpture installed at Denver International Airport known for falling on and killing its artist (Luis Jimenez) shortly before he finished the piece. Your guide will take you on a walking tour of several installation sites around downtown Denver and share some history and information about each piece. Enjoy!", cost: 25, city: "Denver", image_path: "https://www.flairtradetravels.org/assets/denver_art_walk_photo.png", status: "retired").categories << [city_life, arts_and_culture, good_for_groups]
 
-Experience.create(title: "Brewery Crawl", description: "Join a well-known brewer for a crawl at three of her favorite breweries in Denver. (Please note: Drinks are not included in experience price.)", cost: 35, city: "Denver", image_path: "https://www.flairtradetravels.org/assets/beer_tour_photo.jpg").categories << [city_life, food_and_drink, good_for_groups]
+exp2 = Experience.create(title: "Brewery Crawl", description: "Join a well-known brewer for a crawl at three of her favorite breweries in Denver. (Please note: Drinks are not included in experience price.)", cost: 35, city: "Denver", image_path: "https://www.flairtradetravels.org/assets/beer_tour_photo.jpg").categories << [city_life, food_and_drink, good_for_groups]
+
 
 Experience.create(title: "Christmas Market & Hofbrauhaus", description: "Meet up with U.S. expat and fluent German speaker for a walkthrough one of the most famous holiday markets. Your guide will show you the ropes with it comes to haggling and direct you to some of the best vendors while sharing history about the market. Afterward, your guide will take you to the iconic Hofbrauhaus beer hall and enjoy a beer with you where your experience will comes end. Prost! (Please note: Drinks are not included in experience price.)", cost: 25, city: "Munich", image_path: "https://www.flairtradetravels.org/assets/german_xmas_market.jpg").categories << [arts_and_culture, family_friendly]
 
@@ -64,3 +43,39 @@ Experience.create(title: "Paddle Hawaii", description: "Your core muscles will b
 Experience.create(title: "Birding in BraziI", description: "I wouldn’t say it if it wasn’t true, but on a trip last year, one of our guests spotted a once-thought extinct Dodo. They’re alive and thriving and we know exactly where to find them. Wow your fellow amateur ornithologists at your next cocktail party with shots of rarely seen plumage.", cost: 10, city: "Rio", image_path: "https://www.flairtradetravels.org/assets/brid_watching_tour_photo.jpg").categories << [great_outdoors]
 
 Experience.create(title: "Volcano Jumping", description:  "After this trip, you’ll realize that the Red Bull Rampage is mere child’s play. We’ll supply you with your rocket skates, a helmet and all the Mountain Dew your liver can synthesize. You bring your fearless attitude and your Facebook-ready smile. You’ll collect all the ‘likes’ on your next post.", cost: 100, city: "Pompeii", image_path: "https://www.flairtradetravels.org/assets/volcano_tour_photo.jpg").categories << [active_adventures, great_outdoors, arts_and_culture]
+
+
+
+admin = User.create(name: "admin", email: "admin@admin.com", password: "admin", role: 1)
+
+
+user1 = User.create(name: "user1", email: "user1@user1.com", password: "user1", role: 0)
+order1a = user1.orders.create(status: "Paid")
+order1a.experiences_orders.create(quantity: 2, subtotal: 50, experience_id: 1)
+order1b = user1.orders.create(status: "Paid")
+order1b.experiences_orders.create(quantity: 3, subtotal: 105, experience_id: 2)
+order1c = user1.orders.create(status: "Ordered")
+order1c.experiences_orders.create(quantity: 1, subtotal: 25, experience_id: 3)
+
+
+user2 = User.create(name: "user2", email: "user2@user2.com", password: "user2", role: 0)
+order2a = user2.orders.create(status: "Cancelled")
+order2a.experiences_orders.create(quantity: 4, subtotal: 180, experience_id: 4)
+order2b = user2.orders.create(status: "Completed")
+order2b.experiences_orders.create(quantity: 2, subtotal: 50, experience_id: 5)
+
+user3 = User.create(name: "user3", email: "user3@user3.com", password: "user3", role: 0)
+order3a = user3.orders.create(status: "Paid")
+order3a.experiences_orders.create(quantity: 2, subtotal: 50, experience_id: 6)
+order3b = user3.orders.create(status: "Completed")
+order3b.experiences_orders.create(quantity: 3, subtotal: 75, experience_id: 7)
+
+user4 = User.create(name: "user4", email: "user4@user4.com", password: "user4", role: 0)
+order4a = user4.orders.create(status: "Ordered")
+order4a.experiences_orders.create(quantity: 5, subtotal: 50, experience_id: 8)
+order4b = user4.orders.create(status: "Paid")
+order4b.experiences_orders.create(quantity: 1, subtotal: 20, experience_id: 9)
+order4c = user4.orders.create(status: "Completed")
+order4c.experiences_orders.create(quantity: 4, subtotal: 80, experience_id: 10)
+order4d = user4.orders.create(status: "Cancelled")
+order4d.experiences_orders.create(quantity: 1, subtotal: 25, experience_id: 11)
