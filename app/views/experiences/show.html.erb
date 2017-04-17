@@ -1,4 +1,8 @@
-<h1><%= @experience.title %></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <h1 align="center"><%= @experience.title %></h1>
+          <hr>
 
 <%= image_tag @experience.image_path, class: "thumbnail", size: "304x236" %>
     <p><%= @experience.description %>
@@ -10,3 +14,7 @@
   <%= button_to "Add to cart", cart_path(experience_id: @experience.id), class: "btn btn-info" if @experience.status == "active" %><br>
 
   <h3><%= "This experience is no longer available. It has been retired." if @experience.status == "retired" %></h3>
+
+</div>
+</div>
+</div>

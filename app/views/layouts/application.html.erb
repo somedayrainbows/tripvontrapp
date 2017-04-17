@@ -10,9 +10,9 @@
         <title>TripVonTrapp</title>
         <%= csrf_meta_tags %>
         <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
-        <link href="css/shop-homepage.css" rel="stylesheet">
+        <link href="/css/shop-homepage.css" rel="stylesheet">
 
         <%= stylesheet_link_tag    'application', media: 'all' %>
         <%= javascript_include_tag 'application' %>
@@ -39,7 +39,7 @@
                         <li><a href="/experiences">Browse by Experiences</a></li>
                         <li><a href="/categories">Browse by Category</a></li>
                         <!-- <li><a href="#">Contact</a></li> -->
-                        <li id="view_cart"><a href="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (<%= @cart.total_count %>)</a></li>
+                        <li id="view_cart"><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (<%= @cart.total_count %>)</a></li>
                         <% if current_user %>
                           <li><%= link_to "Profile", dashboard_path %></li>
                           <li><%= link_to "Logout", logout_path, method: :delete %></li>

@@ -4,23 +4,23 @@ admin = User.create(name: "admin", email: "admin@admin.com", password: "admin", 
 
 
 user1 = User.create(name: "user1", email: "user1@user1.com", password: "user1", role: 0)
-order1a = user1.orders.create(id: 1, status: "Paid")
-order1b = user1.orders.create(id: 2, status: "Paid")
-order1c = user1.orders.create(id: 11, status: "Ordered")
+order1a = user1.orders.create(status: "Paid")
+order1b = user1.orders.create(status: "Paid")
+order1c = user1.orders.create(status: "Ordered")
 
 user2 = User.create(name: "user2", email: "user2@user2.com", password: "user2", role: 0)
-order2a = user2.orders.create(id: 3, status: "Cancelled")
-order2b = user2.orders.create(id: 4, status: "Completed")
+order2a = user2.orders.create(status: "Cancelled")
+order2b = user2.orders.create(status: "Completed")
 
 user3 = User.create(name: "user3", email: "user3@user3.com", password: "user3", role: 0)
-order3a = user3.orders.create(id: 5, status: "Paid")
-order3b = user3.orders.create(id: 6, status: "Completed")
+order3a = user3.orders.create(status: "Paid")
+order3b = user3.orders.create(status: "Completed")
 
 user4 = User.create(name: "user4", email: "user4@user4.com", password: "user4", role: 0)
-order4a = user4.orders.create(id: 7, status: "Ordered")
-order4b = user4.orders.create(id: 8, status: "Paid")
-order4c = user4.orders.create(id: 9, status: "Completed")
-order4d = user4.orders.create(id: 10, status: "Cacncelled")
+order4a = user4.orders.create(status: "Ordered")
+order4b = user4.orders.create(status: "Paid")
+order4c = user4.orders.create(status: "Completed")
+order4d = user4.orders.create(status: "Cancelled")
 
 
 
@@ -28,7 +28,7 @@ city_life = Category.create(name: "City Life", image_path: "https://www.flairtra
 food_and_drink = Category.create(name: "Food and Drink", image_path: "https://www.flairtradetravels.org/assets/food_and_drink.jpg")
 arts_and_culture = Category.create(name: "Arts and Culture", image_path: "https://www.flairtradetravels.org/assets/arts_and_culture_2.jpg")
 great_outdoors = Category.create(name: "The Great Outdoors", image_path: "https://www.flairtradetravels.org/assets/great_outdoors.jpg")
-active_adventures = Category.create(name: "Active Adventures", image_path: "https://www.flairtradetravels.org/assets/active_adventure.jpg")
+active_adventures = Category.create(name: "Active Adventures", image_path: "https://www.flairtradetravels.org/assets/active_adventures.png")
 family_friendly = Category.create(name: "Family Friendly", image_path: "https://www.flairtradetravels.org/assets/family_friendly.jpg")
 good_for_groups = Category.create(name: "Good for Groups", image_path: "https://www.flairtradetravels.org/assets/good_for_groups.jpg")
 

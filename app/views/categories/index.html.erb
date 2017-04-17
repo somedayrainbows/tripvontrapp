@@ -19,8 +19,7 @@
                             </div>
                             <%  @categories.each do |category| %>
                             <div class="item">
-                                <a href="/#{category.name}"><h2 align="center"><%= link_to "#{category.name}", category_path(category) %>
-                                <%= image_tag "#{category.image_path}", size: "810X450" %></h2></a>
+                                <%= image_tag "#{category.image_path}" %>
                             </div>
                             <% end %>
                         </div>

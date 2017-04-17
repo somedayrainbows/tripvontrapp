@@ -1,18 +1,16 @@
 class OrdersController < ApplicationController
-
   # after_create :cart_reset
 
   def index
-    user = current_user
     if current_user
-      @orders = user.orders
+      @orders = current_user.orders
     else
       redirect_to "/login"
     end
   end
 
   def create
-    @order = Order.create(total_price: @cart.total, user_id: current_user.id)
+    @order = current_user.orders.create(total_price: @cart.total)
     @order.add_experience_to_order(@cart)
     flash[:success] = "Order was successfully placed."
     cart_reset
@@ -20,11 +18,10 @@ class OrdersController < ApplicationController
   end
 
   def show
-    user = current_user
-    if user.admin?
+    if current_user.admin?
       @order = Order.find(params[:id])
     else
-      @order = user.orders.find(params[:id])
+      @order = current_user.orders.find(params[:id])
     end
   end
 

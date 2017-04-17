@@ -1,5 +1,4 @@
 class CartExperience < SimpleDelegator
-
   attr_reader :id, :quantity
 
   def initialize(id, quantity)
