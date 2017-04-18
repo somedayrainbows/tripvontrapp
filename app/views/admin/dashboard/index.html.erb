@@ -7,6 +7,12 @@
   <%= link_to "Add Experience", new_experience_path, class: "btn btn-success" %>
 </p>
 <details open>
+  <summary>Review pending Experiences</summary>
+  <% @pending_experiences.each do |p| %>
+    <p><%= link_to p.title, experience_path(p) %> | Submitted on: <%= p.created_at %></p>
+  <% end %>
+</details>
+<details open>
   <summary>Orders summary by status</summary>
    <p>Ordered: <%= @orders.where(status: "Ordered").count %></p>
    <p>Paid: <%= @orders.where(status: "Paid").count %></p>
