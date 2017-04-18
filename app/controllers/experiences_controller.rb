@@ -1,7 +1,7 @@
 class ExperiencesController < ApplicationController
 
   def index
-    @experiences = Experience.all.sample(100)
+    @experiences = Experience.where.not(status: 'pending').sample(100)
   end
 
   def show
@@ -22,11 +22,15 @@ class ExperiencesController < ApplicationController
     else
       render :new
     end
+
+  def destroy
+    
+  end
   end
 
 private
   def experience_params
-    params.require(:experience).permit(:title, :description, :city,
+    params.require(:experience).permit(:title, :description, :city, :status,
                                        :cost, :photo, category_ids: [])
   end
 end

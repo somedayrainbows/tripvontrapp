@@ -7,6 +7,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def index
+    @pending_experiences = Experience.where(status: 'pending')
     if params[:status]
       @orders = Order.where(status: params[:status])
     else
