@@ -4,9 +4,10 @@
           <h1 align="center"><%= @experience.title %></h1>
           <hr>
 
-<%= image_tag @experience.image_path, class: "thumbnail", size: "304x236" %>
+          <%= image_tag @experience.photo.url(:medium) %>
+
     <p><%= @experience.description %>
-    <p>Location: <%= @experience.city %></p>  
+    <p>Location: <%= @experience.city %></p>
     <p>Cost per person: $<%= @experience.cost %></p>
     <p>Categories: <% @experience.categories.each do |category| %>
       <%= link_to "#{category.name}", category_path(category) %>

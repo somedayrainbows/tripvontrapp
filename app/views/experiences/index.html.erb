@@ -1,5 +1,3 @@
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-16">
@@ -10,7 +8,9 @@
           <div class="thumbnail">
 
               <h2> <%= link_to "#{experience.title}", experience_path(experience) %></h2>
-              <%= image_tag "#{experience.image_path}", class: "thumbnail", size: "304x236" %>
+
+              <%= image_tag experience.photo.url(:medium) %>  <!-- new photo with paperclip -->
+
               <p>Cost per person: $<%= experience.cost %></p>
               <p>Categories: <% experience.categories.each do |category| %>
                 <%= link_to "#{category.name}", category_path(category) %>
