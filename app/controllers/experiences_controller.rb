@@ -22,10 +22,13 @@ class ExperiencesController < ApplicationController
     else
       render :new
     end
+  end
 
   def destroy
-    
-  end
+    experience = Experience.find(params[:id])
+    experience.destroy
+
+    redirect_to admin_dashboard_index_path
   end
 
 private

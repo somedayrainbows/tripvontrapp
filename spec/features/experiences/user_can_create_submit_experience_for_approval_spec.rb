@@ -70,9 +70,7 @@ RSpec.feature 'User can submit new experience' do
     visit experience_path(exp)
 
     click_on 'Delete'
-    
 
     expect(page).to_not have_content(exp.title)
   end
-
 end
