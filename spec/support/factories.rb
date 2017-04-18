@@ -21,32 +21,28 @@ FactoryGirl.define do
 
 
   factory :category do
-    "category#{name}"
+    name
   end
 
   sequence :name do |n|
     "name#{n}"
   end
 
-  factory :user do |n|
+  factory :user do
     name
     email
     password "password"
     role 0
-    factory :user_with_orders do |n|
+    factory :user_with_orders do
       orders {create_list(:order, 2)}
     end
   end
-
-  # sequence :name do |n|
-  #   n
-  # end
 
   sequence :email do |n|
     "person#{n}@awesome.com"
   end
 
-  factory :order do |n|
+  factory :order do
     sequence(:status) { |n| "#{n} status" }
     total_price 10
     user
