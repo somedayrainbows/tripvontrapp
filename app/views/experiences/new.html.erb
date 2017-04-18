@@ -3,10 +3,22 @@
         <div class="col-md-16">
           <h1 align="center">Add New Experience</h1>
           <hr>
+          <br>
+<% if current_user.admin? %>
+<% else %>
 
+   <h3>Submit this form to begin the approval process to have your experience hosted on our site.</h3>
+
+<% end %>
+<br>
 
 
 <%= form_for @experience  do |f| %>
+<% if current_user.admin? %>
+  <%= f.label :status %>
+  <%= f.select(:status, options_for_select([['pending'], ['active']])) %>
+<% else %>
+<% end %>
   <%= f.label :title %>
   <%= f.text_field :title%>
   <%= f.label :description%>
@@ -28,6 +40,7 @@
       <%= category.name %>
     </div>
     <% end %>
+    <br>
   <%= f.submit class: "btn btn-info" %>
 <% end %>
 </div>

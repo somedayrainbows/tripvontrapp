@@ -5,8 +5,8 @@ class Experience < ActiveRecord::Base
   validates :description, presence: true
   validates :cost, presence: true
   # validates :category, presence: true
-
-  has_many :experience_categories
+  
+  has_many :experience_categories, dependent: :destroy
   has_many :categories, through: :experience_categories
 
   has_many :experiences_orders
