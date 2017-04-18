@@ -3,7 +3,9 @@
         <div class="col-md-16">
           <h1 align="center">Admin Dashboard </h1>
           <hr>
-
+<p>
+  <%= link_to "Add Experience", new_experience_path, class: "btn btn-success" %>
+</p>
 <details open>
   <summary>Orders summary by status</summary>
    <p>Ordered: <%= @orders.where(status: "Ordered").count %></p>

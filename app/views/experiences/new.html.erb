@@ -1,0 +1,24 @@
+<h1>Add New Experience</h1>
+
+<%= form_for @experience  do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title%>
+  <%= f.label :description%>
+  <%= f.text_area :description%>
+  <%= f.label :cost%>
+  <%= f.text_field :cost%>
+  <%= f.label :city %>
+  <%= f.text_field :city%>
+  <%= f.label :image_path %>
+  <%= f.text_field :image_path%>
+  <%= f.label :category_id%>
+  <% @categories.each do |category| %>
+    <div>
+      <%= check_box_tag(:category_ids, category.id, false,
+                        name: 'experience[category_ids][]',
+                        id: "category-#{category.id}") %>
+      <%= category.name %>
+    </div>
+    <% end %>
+  <%= f.submit %>
+<% end %>
