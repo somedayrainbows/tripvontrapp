@@ -9,8 +9,10 @@
   <%= f.text_field :cost%>
   <%= f.label :city %>
   <%= f.text_field :city%>
-  <%= f.label :image_path %>
-  <%= f.text_field :image_path%>
+
+  <%= f.label :photo %>
+  <%= f.file_field :photo%>
+
   <%= f.label :category_id%>
   <% @categories.each do |category| %>
     <div>
