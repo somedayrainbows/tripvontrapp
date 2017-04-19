@@ -17,6 +17,7 @@ class ExperiencesController < ApplicationController
     @categories = Category.all
     @experience = Experience.new(experience_params)
     if @experience.save
+      ExperienceMailer.submit_email(current_user, current_admin, @experience).deliver_now
       flash[:success] = "#{@experience.title} has been successfully created."
       redirect_to experience_path(@experience)
     else
