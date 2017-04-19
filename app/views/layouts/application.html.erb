@@ -40,7 +40,6 @@
                         <li>
                         <%= link_to 'Become a guide', new_experience_path %>
                         </li>
-                        <!-- <li><a href="#">Contact</a></li> -->
                         <li id="view_cart"><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart (<%= @cart.total_count %>)</a></li>
                         <% if current_user %>
                           <li><%= link_to "Profile", dashboard_path %></li>
@@ -48,6 +47,7 @@
                         <% else %>
                           <li id="login"><%= link_to "Login", login_path %></li>
                         <% end %>
+                        <li><%= link_to "Admin Dash", admin_dashboard_index_path if current_user.try(:admin?) %></li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->

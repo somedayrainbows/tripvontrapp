@@ -1,18 +1,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-16">
-          <h1 align="center">Add New Experience</h1>
-          <hr>
-          <br>
-<% if current_user.admin? %>
-<% else %>
 
-   <h3>Submit this form to begin the approval process to have your experience hosted on our site.</h3>
-
-<% end %>
+<% if current_user %>
+<h1 align="center">Become a Guide!</h1>
+<hr>
 <br>
 
-
+<p>Welcome! Thanks for your interest in becoming a guide. We prefer our guides to have completed at least one experience with an existing TripVonTrapp guide to get the ball rolling on becoming a guide. However, if no experiences exist in your city, you may also start the process. If either scenario describes you, submit this form to submit the experience you'd to lead to begin the approval process. We'll review your experience submission and be in touch to discuss your guide status soon.</p>
+<br>
+<h3>Submit a new experience</h3>
+<hr>
 <%= form_for @experience  do |f| %>
 <% if current_user.admin? %>
   <%= f.label :status %>
@@ -21,13 +19,15 @@
 <% end %>
   <%= f.label :title %>
   <%= f.text_field :title%>
-  <%= f.label :description%>
-  <%= f.text_area :description%>
   <%= f.label :cost%>
   <%= f.text_field :cost%>
   <%= f.label :city %>
   <%= f.text_field :city%><br>
-
+  <br><br>
+  <%= f.label :description%>
+  <%= f.text_area :description%>
+  <br><br>
+  <p>Please choose and upload a photo that best embodies your experience. Please make sure you took the photo, it has commercial reuse licence, or is otherwise available for use with your experience. We check all photos for legal use and submitting a questionable photo could delay your guide approval process.<br><br>
   <%= f.label :photo %>
   <%= f.file_field :photo%><br>
 
@@ -43,6 +43,14 @@
     <br>
   <%= f.submit class: "btn btn-info" %>
 <% end %>
+
+<% else %>
+<div class="jumbotron">
+        <p class="lead" align="center">To learn more about becoming a guide, create an account and log in to access this page!</p>
+        <p align="center"><%= link_to "Create Account", new_user_path, class: "btn btn-info" %></p>
+</div>
+<% end %>
+
 </div>
 </div>
 </div>

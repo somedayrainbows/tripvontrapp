@@ -17,10 +17,15 @@ class ExperiencesController < ApplicationController
     @categories = Category.all
     @experience = Experience.new(experience_params)
     if @experience.save
-      ExperienceMailer.submit_email(current_user, current_admin, @experience).deliver_now
-      flash[:success] = "#{@experience.title} has been successfully created."
+      # ExperienceMailer.submit_email(current_user, current_admin, @experience).deliver_now
+      if current_user.admin?
+        flash[:success] = "#{@experience.title} has been successfully created."
+      else
+        flash[:success] = "Sit tight! Your experience has been submitted for review."
+      end
       redirect_to experience_path(@experience)
     else
+      flash[:danger] = "Sorry! Something went wrong. Please try again."
       render :new
     end
   end
