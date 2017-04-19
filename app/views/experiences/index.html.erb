@@ -7,9 +7,9 @@
         <div class="col-sm-6 col-lg-6 col-md-6">
           <div class="thumbnail">
 
-              <h2> <%= link_to "#{experience.title}", experience_path(experience) %></h2>
+              <h4> <%= link_to "#{experience.title}", experience_path(experience) %></h4>
 
-              <%= image_tag experience.photo.url(:medium) %>  <!-- new photo with paperclip -->
+              <%= image_tag experience.photo.url(:medium) %>
 
               <p>Cost per person: $<%= experience.cost %></p>
               <p>Categories: <% experience.categories.each do |category| %>

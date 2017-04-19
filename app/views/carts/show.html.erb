@@ -28,10 +28,20 @@
 							<td data-th="Price"><%= experience.cost %></td>
 							<td class="quantity" data-th="Quantity">
 								<input type="number" class="form-control text-center" value="<%= experience.quantity %>">
-                <%= button_to "+", cart_path(experience_id: experience.id, type: "increase"), class: "btn-sm", method: :put %>
-                <%= button_to "-", cart_path(experience_id: experience.id, type: "decrease"), class: "btn-sm", method: :put %>
+								<table>
+									<tr>
+										<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td>
+										<td><%= link_to cart_path(experience_id: experience.id, type: "increase"), method: :put do %>
+										    <span class="glyphicon glyphicon-plus-sign"></span>
+										<% end %></td>
+										<td>&nbsp;</td><td>&nbsp;</td>
+										<td><%= link_to cart_path(experience_id: experience.id, type: "decrease"), method: :put do %>
+										    <span class="glyphicon glyphicon-minus-sign"></span>
+										<% end %></td>
+									</tr>
+								</table>
 								</td>
-							<td class="subtotal" data-th="Subtotal" class="text-center"><%= experience.subtotal %></td>
+							<td class="subtotal" data-th="Subtotal" align="center" class="text-center">$<%= experience.subtotal %></td>
 							<td class="actions" data-th="">
 								<%= button_to "remove", '/cart/remove', method: :put, params: [experience_id: experience.id], class: "btn btn-danger btn-sm" %>
 							</td>
@@ -43,15 +53,15 @@
 							<td class="text-center"><strong><%= @cart.total %></strong></td>
 						</tr>
 						<tr>
-							<td><a href="/experiences" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
+							<td><a href="/experiences" class="btn btn-info"><i class="fa fa-angle-left"></i> Continue Shopping</a></td>
 							<td colspan="2" class="hidden-xs"></td>
 							<td class="hidden-xs text-center"><strong>Total: $<%= @cart.total %></strong></td>
 							<td>
 								<% if current_user %>
-								<%= link_to "Checkout", orders_path, method: :post, class: "checkout btn btn-success btn-block" %>
+								<%= link_to "Checkout", orders_path, method: :post, class: "checkout btn btn-info btn-block" %>
 
 								<% else %>
-									<%= link_to "Create Account", new_user_path, class: "btn btn-success btn-block" %>
+									<%= link_to "Create Account", new_user_path, class: "btn btn-info btn-block" %>
 								<% end %>
 							</td>
 						</tr>

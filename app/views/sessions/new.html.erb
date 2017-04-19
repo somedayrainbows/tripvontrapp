@@ -1,19 +1,26 @@
-<h4 align="center">Please log in or create a new account.</h4>
-<div align="center" class="col-md-6 col-md-offset-3">&nbsp;</div>
-<div class="form">
-  <div align="center" class="col-md-6 col-md-offset-3">
-    <%= form_tag '/login' do %>
-      <%= label_tag :email %>
-      <%= text_field_tag :email %>&nbsp;&nbsp;
-      <%= label_tag :password %>
-      <%= password_field_tag :password %>&nbsp;&nbsp;
-      <%= submit_tag "Login", class: "btn btn-primary" %>
-    <% end %><br><br>
-  </div>
-  <div align="center" class="col-md-6 col-md-offset-3">&nbsp;</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <h1 align="center">Please log in!</h1>
+          <hr>
 
-    <div align="center" class="new account">
-      <div class="col-md-6 col-md-offset-3">
-    No account yet? Get one! <%= link_to "Create New Account", new_user_path %>
+          <div class="form">
+            <div class="col-md-2"></div>
+            <div class="col-md-8" align="center">
+              <%= form_tag '/login' do %>
+                <%= label_tag :email %>
+                <%= text_field_tag :email %>&nbsp;&nbsp;
+                <%= label_tag :password %>
+                <%= password_field_tag :password %><br><br>
+                <%= submit_tag "Login", class: "btn btn-info" %>
+              <% end %><br><br><br>
+              No account yet? Get one!<br>
+              <%= link_to "Create New Account", new_user_path %>
+            </div>
+            <div class="col-md-2"></div>
+          </div>
+
+
+        </div>
   </div>
 </div>

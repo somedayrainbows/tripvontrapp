@@ -1,3 +1,16 @@
-<h1>Edit your profile, <%= @user.name %></h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-16">
+          <h1 align="center">Edit your profile, <%= @user.name %></h1>
+          <hr>
+          <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-4" align="right">
+              <%= render partial: 'form' %>
 
-<%= render partial: 'form' %>
+            </div>
+            <div class="col-md-5"></div>
+          </div>
+</div>
+</div>
+</div>

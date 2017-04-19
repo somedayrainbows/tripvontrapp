@@ -1,7 +1,3 @@
-
-
-
-
 city_life = Category.create(name: "City Life", image_path: "https://www.flairtradetravels.org/assets/city_life.jpg")
 food_and_drink = Category.create(name: "Food and Drink", image_path: "https://www.flairtradetravels.org/assets/food_and_drink.jpg")
 arts_and_culture = Category.create(name: "Arts and Culture", image_path: "https://www.flairtradetravels.org/assets/arts_and_culture_2.jpg")
@@ -11,7 +7,7 @@ family_friendly = Category.create(name: "Family Friendly", image_path: "https://
 good_for_groups = Category.create(name: "Good for Groups", image_path: "https://www.flairtradetravels.org/assets/good_for_groups.jpg")
 
 
-exp1 = Experience.create(title: "Public Art Walking Tour", description: "Denver is home to an eclectic and fascinating public art collection that involves much more than its poster child--a red-eyed stallion sculpture installed at Denver International Airport known for falling on and killing its artist (Luis Jimenez) shortly before he finished the piece. Your guide will take you on a walking tour of several installation sites around downtown Denver and share some history and information about each piece. Enjoy!", cost: 25, city: "Denver", photo:  File.new(Rails.root + "app/assets/images/denver_art_walk_photo.png"), status: "retired").categories << [city_life, arts_and_culture, good_for_groups]
+exp1 = Experience.create(title: "Public Art Walking Tour", description: "Denver is home to an eclectic and fascinating public art collection that involves much more than its poster child--a red-eyed stallion sculpture installed at Denver International Airport known for falling on and killing its artist (Luis Jimenez) shortly before he finished the piece. Your guide will take you on a walking tour of several installation sites around downtown Denver and share some history and information about each piece. Enjoy!", cost: 25, city: "Denver", photo: File.new(Rails.root + "app/assets/images/denver_art_walk_photo.png"), status: "retired").categories << [city_life, arts_and_culture, good_for_groups]
 
 exp2 = Experience.create(title: "Brewery Crawl", description: "Join a well-known brewer for a crawl at three of her favorite breweries in Denver. (Please note: Drinks are not included in experience price.)", cost: 35, city: "Denver", photo: File.new(Rails.root + "app/assets/images/beer_tour_photo.jpg")).categories << [city_life, food_and_drink, good_for_groups]
 

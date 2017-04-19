@@ -1,12 +1,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-16">
-          <% if current_user.admin? %>
-          <% else %>
-             <h3>Your experience has been submitted for approval</h3>
-          <% end %>
-          <br>
-
           <h1 align="center"><%= @experience.title %></h1>
           <hr>
 
@@ -21,7 +15,6 @@
 
   <%= button_to "Add to cart", cart_path(experience_id: @experience.id), class: "btn btn-info" if @experience.status == "active" %><br>
   <h3><%= "This experience is no longer available. It has been retired." if @experience.status == "retired" %></h3>
-  <%= link_to "Delete", experience_path(@experience), class: "btn btn-danger", method: :delete if current_user.admin? %>
 
 </div>
 </div>
