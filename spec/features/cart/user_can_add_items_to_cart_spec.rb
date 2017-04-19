@@ -48,20 +48,18 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
 
     expect(current_path).to eq "/cart"
 
-    # within(".image_path") do
-    #   expect(page).to have_content(exp.image_path)
-    # end
-
-    within("tbody tr:nth-child(1)") do
+    within("tbody tr:nth-child(1) div.col-sm-10") do
       expect(page).to have_content(exp.title)
       expect(page).to have_content(exp.description)
-      expect(page).to have_content(exp.cost)
     end
+    # xwithin()
+    #   expect(page).to have_content(exp.cost)
+    # end
 
 
     within ("tbody tr:nth-child(1) td.quantity") do
-      expect(page).to have_button("+")
-      expect(page).to have_button("-")
+      expect(page).to have_link("+")
+      expect(page).to have_link("-")
     end
 
     within("tfoot") do

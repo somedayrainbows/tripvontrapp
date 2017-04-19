@@ -13,7 +13,7 @@ RSpec.feature 'User can submit new experience' do
     click_on 'Become a guide'
 
     expect(current_path).to eq(new_experience_path)
-    expect(page).to have_content('Submit this form')
+    expect(page).to have_content('submit this form')
   end
 
   scenario 'logged in user can fill in form to create new experience' do
@@ -35,7 +35,7 @@ RSpec.feature 'User can submit new experience' do
     expect(page).to have_content('Denver')
     expect(page).to have_content('Family Friendly')
     expect(page).to have_content('City Life')
-    expect(page).to have_content('Your experience has been submitted for approval')
+    expect(page).to have_content('Your experience has been submitted for review')
     expect(Experience.last.status).to eq('pending')
   end
 

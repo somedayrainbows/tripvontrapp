@@ -18,7 +18,7 @@ RSpec.feature 'Admin can create an experience' do
     click_on 'Add Experience'
 
     expect(current_path).to eq(new_experience_path)
-    expect(page).to have_content("Add New Experience")
+    expect(page).to have_content("Become a guide")
   end
   scenario 'admin is able to create an active experience' do
     click_on 'Add Experience'
@@ -27,7 +27,6 @@ RSpec.feature 'Admin can create an experience' do
     fill_in 'experience[description]', with: 'The most fun you will have, this year. Guaranteed. Maybe.'
     fill_in 'experience[cost]', with: 10000
     fill_in 'experience[city]', with: 'Denver'
-    fill_in 'experience[image_path]', with: "https://www.flairtradetravels.org/assets/city_life.jpg"
 
     check('category-1')
     check('category-2')
