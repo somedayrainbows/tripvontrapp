@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   resources :orders, only: [:index, :show, :create, :edit, :update]
 
   resources :categories, only: [:index]
-  resources :experiences, only: [:index, :show, :new, :create, :destroy]
+  resources :experiences, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
 
 
