@@ -13,19 +13,13 @@
   <% end %>
 </details>
 
-<details close>
-  <summary>Orders summary by status</summary>
-   <p>Ordered: <%= @orders.where(status: "Ordered").count %></p>
-   <p>Paid: <%= @orders.where(status: "Paid").count %></p>
-   <p>Cancelled: <%=@orders.where(status: "Cancelled").count %></p>
-   <p>Completed: <%=@orders.where(status: "Completed").count %></p>
-</details>
   <hr>
   <h4>Filter orders by status</h4>
-    <%= link_to "ORDERED", admin_dashboard_index_path(status: "Ordered") %>  |
-    <%= link_to "PAID", admin_dashboard_index_path(status: "Paid") %>  |
-    <%= link_to "COMPLETED", admin_dashboard_index_path(status: "Completed") %>  |
-    <%= link_to "CANCELLED", admin_dashboard_index_path(status: "Cancelled") %>
+    <%= link_to "ALL ORDERS", admin_dashboard_index_path %> (<%=@orders.all.count %>)  |
+    <%= link_to "ORDERED", admin_dashboard_index_path(status: "Ordered") %> (<%= @orders.where(status: "Ordered").count %>)  |
+    <%= link_to "PAID", admin_dashboard_index_path(status: "Paid") %> (<%= @orders.where(status: "Paid").count %>)  |
+    <%= link_to "COMPLETED", admin_dashboard_index_path(status: "Completed") %> (<%=@orders.where(status: "Cancelled").count %>) |
+    <%= link_to "CANCELLED", admin_dashboard_index_path(status: "Cancelled") %> (<%=@orders.where(status: "Completed").count %>)
   </p><br>
 <div class="order-table">
   <h4>All Orders</h4>
@@ -40,7 +34,9 @@
      <td><%= link_to order.id, order_path(order) %></td>
      <td><%= order.status %></td>
      <td><%= link_to "Cancel order #{order.id}", order_path(order, status: "Cancelled"), method: :put if order.status == "Paid" || order.status == "Ordered" %>
+       &nbsp;&nbsp;&nbsp;
      <%= link_to "Mark order #{order.id} paid", order_path(order, status: "Paid"), method: :put if order.status == "Ordered" %>
+     &nbsp;&nbsp;&nbsp;
      <%= link_to "Mark order #{order.id} complete", order_path(order, status: "Completed"), method: :put if order.status == "Paid" %> </td>
    </tr>
    <% end %>

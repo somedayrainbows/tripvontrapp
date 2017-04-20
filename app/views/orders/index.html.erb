@@ -3,25 +3,17 @@
         <div class="col-md-16">
           <h1 align="center"><%= @orders.last.user.name %>'s Orders</h1>
           <hr>
-
-
-<div class="orders">
-
-<% @orders.each do |order| %>
-  <div>
-    Date created: <%= link_to order.created_at, order_path(order) %><br>
-    Status: <%= link_to order.status, order_path(order) %><br>
-    Date status updated: <%= order.updated_at %><br>
-    Total price: $<%= order.total_price %><br><br>
-
+          <div class="orders">
+          <% @orders.each do |order| %>
+            <div>
+              Date created: <%= link_to order.created_at, order_path(order) %><br>
+              Status: <%= link_to order.status, order_path(order) %><br>
+              Date status updated: <%= order.updated_at %><br>
+              Total price: $<%= order.total_price %><br><br>
+            </div>
+            <% end %>
+          </div>
+        <p><%= link_to "Browse All Experiences", experiences_path %></p>
+      </div>
   </div>
-  <% end %>
-</div>
-
-<p>
-<%= link_to "Browse All Experiences", experiences_path %>
-</p>
-
-</div>
-</div>
 </div>

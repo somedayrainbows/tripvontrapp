@@ -17,14 +17,13 @@
   <%= f.select(:status, options_for_select([['pending'], ['active']])) %>
 <% else %>
 <% end %>
-  <%= f.label :title %>
-  <%= f.text_field :title%>
-  <%= f.label :cost%>
-  <%= f.text_field :cost%>
-  <%= f.label :city %>
-  <%= f.text_field :city%><br>
-  <br><br>
-  <%= f.label :description%>
+  <%= f.label :title %><br>
+  <%= f.text_field :title%><br><br
+  <%= f.label :cost%><br>
+  <%= f.text_field :cost%><br><br>
+  <%= f.label :city %><br>
+  <%= f.text_field :city%><br><br>
+  <%= f.label :description%><br>
   <%= f.text_area :description%>
   <br><br>
   <p>Please choose and upload a photo that best embodies your experience. Please make sure you took the photo, it has commercial reuse licence, or is otherwise available for use with your experience. We check all photos for legal use and submitting a questionable photo could delay your guide approval process.<br><br>

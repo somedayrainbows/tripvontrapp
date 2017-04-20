@@ -1,28 +1,39 @@
+
 <div class="container">
     <div class="row">
         <div class="col-md-16">
           <h1 align="center">Vacation Like a Local</h1>
           <hr>
+
+      <div class="well" align="center"><b>Browse by category:</b>
+          <span class="glyphicon glyphicon-star-empty"></span> <%  @categories.each do |category| %>
+              <%= link_to "#{category.name}", category_path(category) %> <span class="glyphicon glyphicon-star-empty"></span>
+          <% end %>
+          </div>
         <%  @experiences.each do |experience| %>
         <div class="col-sm-6 col-lg-6 col-md-6">
-          <div class="thumbnail">
-
-              <h4> <%= link_to "#{experience.title}", experience_path(experience) %></h4>
-
-              <%= image_tag experience.photo.url(:medium) %>
-
-              <p>Cost per person: $<%= experience.cost %></p>
-              <p>Categories: <% experience.categories.each do |category| %>
-                <%= link_to "#{category.name}", category_path(category) %>
-                <% end %></p>
-                <div class="text-center">
-                  <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %><br>
-                </div>
-                <div class="text-center">
-                  <%= link_to "Retired", experience_path(experience), class: "btn btn-warning" if experience.status == "retired" %>
-                </div>
+            <h4><%= link_to "#{experience.title}", experience_path(experience) %></h4>
+            <%= image_tag experience.photo.url(:medium) %>
+            <h5>Cost per person: $<%= experience.cost %></h5>
+            <p>Categories: <% experience.categories.each do |category| %>
+              <%= link_to "#{category.name}", category_path(category) %>
+              <% end %></p>
+              <div class="text-center">
+                <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %>
+                <%= link_to "Retired", experience_path(experience), class: "btn btn-warning" if experience.status == "retired" %>
+              </div>
+            <div class="ratings">
+                <p class="pull-right">12 reviews</p>
+                <p>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star"></span>
+                    <span class="glyphicon glyphicon-star-empty"></span>
+                </p>
+            </div>
+            <hr>
           </div>
-        </div>
         <% end %>
       </div>
     </div>
