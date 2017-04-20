@@ -2,7 +2,7 @@ class ExperiencesController < ApplicationController
 
   def index
     @categories = Category.all
-    @experiences = Experience.where.not(status: 'pending').sample(100)
+    @experiences = Experience.show_active_experiences
   end
 
   def show

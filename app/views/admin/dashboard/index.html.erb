@@ -16,10 +16,10 @@
   <hr>
   <h4>Filter orders by status</h4>
     <%= link_to "ALL ORDERS", admin_dashboard_index_path %> (<%=@orders.all.count %>)  |
-    <%= link_to "ORDERED", admin_dashboard_index_path(status: "Ordered") %> (<%= @orders.where(status: "Ordered").count %>)  |
-    <%= link_to "PAID", admin_dashboard_index_path(status: "Paid") %> (<%= @orders.where(status: "Paid").count %>)  |
-    <%= link_to "COMPLETED", admin_dashboard_index_path(status: "Completed") %> (<%=@orders.where(status: "Cancelled").count %>) |
-    <%= link_to "CANCELLED", admin_dashboard_index_path(status: "Cancelled") %> (<%=@orders.where(status: "Completed").count %>)
+    <%= link_to "ORDERED", admin_dashboard_index_path(status: "Ordered") %> (<%= @orders.ordered_status_count %>)  |
+    <%= link_to "PAID", admin_dashboard_index_path(status: "Paid") %> (<%= @orders.paid_status_count %>)  |
+    <%= link_to "COMPLETED", admin_dashboard_index_path(status: "Completed") %> (<%=@orders.completed_status_count %>) |
+    <%= link_to "CANCELLED", admin_dashboard_index_path(status: "Cancelled") %> (<%=@orders.cancelled_status_count %>)
   </p><br>
 <div class="order-table">
   <h4>All Orders</h4>

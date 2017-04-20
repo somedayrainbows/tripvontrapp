@@ -64,8 +64,8 @@ RSpec.feature "As a logged in admin" do
   scenario "when admin vists dashboard, sees total number of orders for each status" do
     expect(page).to have_content("ORDERED (0)")
     expect(page).to have_content("PAID (1)")
-    expect(page).to have_content("CANCELLED (2)")
-    expect(page).to have_content("COMPLETED (0)")
+    expect(page).to have_content("CANCELLED (0)")
+    expect(page).to have_content("COMPLETED (2)")
   end
 
   scenario "when admin vists dashboard, can filter orders by status type" do
@@ -83,7 +83,7 @@ RSpec.feature "As a logged in admin" do
   end
 
   scenario "when admin visits dashboard, can change status of incomplete orders" do
-    expect(page).to have_content("COMPLETED (0)")
+    expect(page).to have_content("COMPLETED (2)")
 
     click_on "Mark order #{@order1a.id} complete"
 
