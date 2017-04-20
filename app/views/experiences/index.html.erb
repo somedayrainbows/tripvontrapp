@@ -15,8 +15,12 @@
               <p>Categories: <% experience.categories.each do |category| %>
                 <%= link_to "#{category.name}", category_path(category) %>
                 <% end %></p>
-              <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %><br>
-              <%= "This experience is no longer available. It has been retired. Join our email list to be notified when this experience is reactivated." if experience.status == "retired" %>
+                <div class="text-center">
+                  <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %><br>
+                </div>
+                <div class="text-center">
+                  <%= link_to "Retired", experience_path(experience), class: "btn btn-warning" if experience.status == "retired" %>
+                </div>
           </div>
         </div>
         <% end %>
