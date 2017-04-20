@@ -33,9 +33,9 @@ FactoryGirl.define do
     email
     password "password"
     role 0
-    factory :user_with_orders do
-      orders {create_list(:order, 2)}
-    end
+    # factory :user_with_orders do
+    #   experiences_orders {create_list(:experiences_order, 2)}
+    # end
   end
 
   sequence :email do |n|
@@ -48,4 +48,10 @@ FactoryGirl.define do
     user
   end
 
+  factory :experiences_order do
+    quantity 1
+    subtotal 2
+    order
+    experience
+  end
 end

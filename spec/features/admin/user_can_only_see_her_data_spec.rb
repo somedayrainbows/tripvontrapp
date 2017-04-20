@@ -3,8 +3,8 @@ require 'rails_helper'
 
 RSpec.feature "user can only see her data" do
   scenario "when a logged in user views orders, she only sees her orders" do
-      user = create(:user_with_orders)
-      user2 = create(:user_with_orders)
+      user = create(:experiences_order).order.user
+      user2 = create(:experiences_order).order.user
       login(user)
 
       visit orders_path
@@ -14,7 +14,7 @@ RSpec.feature "user can only see her data" do
   end
 
   scenario "when a logged in user views orders, cannot see any admin data" do
-      user = create(:user_with_orders)
+      user = create(:experiences_order).order.user
       login(user)
 
       visit admin_dashboard_index_path

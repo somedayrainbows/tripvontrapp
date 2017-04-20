@@ -4,7 +4,7 @@ require 'rails_helper'
 RSpec.feature "visitor cannot do much" do
   scenario "a logged out user cannot view other users' private data" do
       user = create(:user)
-      user2 = create(:user_with_orders)
+      user2 = create(:experiences_order).order.user
 
       visit orders_path
 
