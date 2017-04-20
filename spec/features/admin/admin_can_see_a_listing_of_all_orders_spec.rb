@@ -87,6 +87,6 @@ RSpec.feature "As a logged in admin" do
 
     click_on "Mark order #{@order1a.id} complete"
 
-    expect(page).to have_content("COMPLETED (1)")
+    expect(page).to have_content("Completed 3")
   end
 end

@@ -29,7 +29,7 @@ RSpec.feature "A logged in admin" do
     fill_in "user[name]", with: "something new"
     click_on "Update"
 
-    expect(page).to have_content("something new, you have updated your account.")
+    expect(page).to have_content("something new Name")
   end
 
   scenario "is not able to modify another user's account" do
