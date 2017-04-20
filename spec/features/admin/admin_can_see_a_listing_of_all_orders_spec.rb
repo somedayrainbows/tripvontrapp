@@ -31,7 +31,7 @@ RSpec.feature "As a logged in admin" do
   scenario "when admin vists dashboard, sees a listing of all orders with a link to each" do
 
     expect(page).to have_content(@order1a.id)
-    expect(page).to have_content(@order1a.status)
+    expect(page).to have_content(@order1a.status.upcase)
     expect(page).to have_link('1')
 
     expect(page).to have_content(@order1b.id)
@@ -39,7 +39,7 @@ RSpec.feature "As a logged in admin" do
     expect(page).to have_link('2')
 
     expect(page).to have_content(@order2a.id)
-    expect(page).to have_content(@order2a.status)
+    expect(page).to have_content(@order2a.status.upcase)
     expect(page).to have_link('3')
 
     expect(page).to have_content(@order2b.id)
@@ -62,16 +62,16 @@ RSpec.feature "As a logged in admin" do
   end
 
   scenario "when admin vists dashboard, sees total number of orders for each status" do
-    expect(page).to have_content("Ordered: 0")
-    expect(page).to have_content("Paid: 1")
-    expect(page).to have_content("Cancelled: 0")
-    expect(page).to have_content("Completed: 2")
+    expect(page).to have_content("ORDERED (0)")
+    expect(page).to have_content("PAID (1)")
+    expect(page).to have_content("CANCELLED (2)")
+    expect(page).to have_content("COMPLETED (0)")
   end
 
   scenario "when admin vists dashboard, can filter orders by status type" do
     click_on "ORDERED"
 
-    expect(page).to have_content(@order1a.status)
+    expect(page).to have_content(@order1a.status.upcase)
     within(".order-table") do
       expect(page).to_not have_content(@order1b.status)
     end
@@ -83,10 +83,10 @@ RSpec.feature "As a logged in admin" do
   end
 
   scenario "when admin visits dashboard, can change status of incomplete orders" do
-    expect(page).to have_content("Completed: 2")
+    expect(page).to have_content("COMPLETED (0)")
 
     click_on "Mark order #{@order1a.id} complete"
 
-    expect(page).to have_content("Completed: 3")
+    expect(page).to have_content("COMPLETED (1)")
   end
 end

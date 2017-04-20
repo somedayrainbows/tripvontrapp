@@ -24,9 +24,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    user = current_user
-    if user.update(user_params)
-      flash[:success] = "#{user.name}, you have updated your account."
+    @user = current_user
+    if @user.update(user_params)
+      flash[:success] = "#{@user.name}, you have updated your account."
       redirect_to dashboard_path
     else
       render :edit
