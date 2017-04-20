@@ -7,7 +7,7 @@ RSpec.feature "When a logged in admin visits dashboard" do
     @admin.update(role: 1)
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@admin)
 
-    @user1 = create(:user_with_orders)
+    @user1 = create(:experiences_order).order.user
     @order1a = @user1.orders.first
     @order1a.update(status: "Ordered")
     @order1b = @user1.orders.last

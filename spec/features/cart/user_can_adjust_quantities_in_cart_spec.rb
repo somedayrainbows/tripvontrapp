@@ -14,7 +14,7 @@ RSpec.feature 'User can adjust experience quantities in cart' do
 
     expect(page).to have_content('Total: $25')
 
-    find('.increase a').click 
+    find('.increase a').click
     expect(current_path).to eq cart_path
 
     within("tbody tr:nth-child(1) td.subtotal") do
@@ -37,7 +37,7 @@ RSpec.feature 'User can adjust experience quantities in cart' do
 
     expect(page).to have_content('Total: $25')
 
-    click_link '+'
+    find('a.increase').click
     expect(current_path).to eq cart_path
 
 
@@ -47,7 +47,7 @@ RSpec.feature 'User can adjust experience quantities in cart' do
 
     expect(page).to have_content('Total: $50')
 
-    click_link '-'
+    find('a.decrease').click
     expect(current_path).to eq cart_path
 
 
