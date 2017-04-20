@@ -37,7 +37,7 @@
             <hr>
             <% @random_experiences.each do |rando|  %>
                 <div class="col-sm-4 col-lg-4 col-md-4">
-                    <!-- <div class="thumbnail"> -->
+                    <div class="thumbnail">
                         <%= image_tag "#{rando.photo}", class: "thumbnail", size: "304x236" %>
                         <div class="caption">
                             <h4 class="pull-right">$<%= rando.cost %></h4>
@@ -57,7 +57,7 @@
                         </div>
                         <hr>
                     </div>
-                <!-- </div> -->
+                </div>
                 <% end %>
             </div>
         </div>

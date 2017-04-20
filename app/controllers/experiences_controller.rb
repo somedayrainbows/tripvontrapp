@@ -31,6 +31,22 @@ class ExperiencesController < ApplicationController
     end
   end
 
+  def edit
+    @categories = Category.all
+    @experience = Experience.find(params[:id])
+  end
+
+  def update
+    @experience = Experience.find(params[:id])
+    @experience.update(experience_params)
+    if @experience.save
+      flash[:success] = "#{@experience.title} has been activated!"
+      redirect_to admin_dashboard_index_path
+    else
+      render :edit
+    end
+  end
+
   def destroy
     experience = Experience.find(params[:id])
     experience.destroy

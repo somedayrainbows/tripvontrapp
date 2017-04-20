@@ -10,18 +10,18 @@
               <%= link_to "#{category.name}", category_path(category) %> <span class="glyphicon glyphicon-star-empty"></span>
           <% end %>
           </div>
-
-
         <%  @experiences.each do |experience| %>
         <div class="col-sm-6 col-lg-6 col-md-6">
-            <h4> <%= link_to "#{experience.title}", experience_path(experience) %></h4>
+            <h4><%= link_to "#{experience.title}", experience_path(experience) %></h4>
             <%= image_tag experience.photo.url(:medium) %>
             <h5>Cost per person: $<%= experience.cost %></h5>
             <p>Categories: <% experience.categories.each do |category| %>
               <%= link_to "#{category.name}", category_path(category) %>
               <% end %></p>
-            <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %><br>
-            <%= "This experience has been retired." if experience.status == "retired" %>
+              <div class="text-center">
+                <%= button_to "Add to cart", cart_path(experience_id: experience.id), class: "btn btn-info" if experience.status == "active" %>
+                <%= link_to "Retired", experience_path(experience), class: "btn btn-warning" if experience.status == "retired" %>
+              </div>
             <div class="ratings">
                 <p class="pull-right">12 reviews</p>
                 <p>
