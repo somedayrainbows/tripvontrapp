@@ -7,19 +7,19 @@ RSpec.feature "As a logged in admin" do
     @admin.update(role: 1)
     login(@admin)
 
-    @user1 = create(:user_with_orders)
+    @user1 = create(:experiences_order).order.user
     @order1a = @user1.orders.first
     @order1a.update(status: "Ordered")
     @order1b = @user1.orders.last
     @order1b.update(status: "Paid")
 
-    @user2 = create(:user_with_orders)
+    @user2 = create(:experiences_order).order.user
     @order2a = @user2.orders.first
     @order2a.update(status: "Cancelled")
     @order2b = @user2.orders.last
     @order2b.update(status: "Completed")
 
-    @user3 = create(:user_with_orders)
+    @user3 = create(:experiences_order).order.user
     @order3a = @user3.orders.first
     @order3a.update(status: "Paid")
     @order3b = @user3.orders.last
@@ -44,15 +44,15 @@ RSpec.feature "As a logged in admin" do
 
     expect(page).to have_content(@order2b.id)
     expect(page).to have_content(@order2b.status)
-    expect(page).to have_link('4')
+    expect(page).to have_link(@order2b.id)
 
     expect(page).to have_content(@order3a.id)
     expect(page).to have_content(@order3a.status)
-    expect(page).to have_link('5')
+    expect(page).to have_link(@order3a.id)
 
     expect(page).to have_content(@order3b.id)
     expect(page).to have_content(@order3b.status)
-    expect(page).to have_link('6')
+    expect(page).to have_link(@order3b.id)
   end
 
   scenario "Admin can click through order number to order show page" do
@@ -62,9 +62,9 @@ RSpec.feature "As a logged in admin" do
   end
 
   scenario "when admin vists dashboard, sees total number of orders for each status" do
-    expect(page).to have_content("Ordered: 1")
-    expect(page).to have_content("Paid: 2")
-    expect(page).to have_content("Cancelled: 1")
+    expect(page).to have_content("Ordered: 0")
+    expect(page).to have_content("Paid: 1")
+    expect(page).to have_content("Cancelled: 0")
     expect(page).to have_content("Completed: 2")
   end
 
@@ -79,16 +79,14 @@ RSpec.feature "As a logged in admin" do
 
   scenario "when admin vists dashboard, can view links to update status of each order" do
     expect(page).to have_link("Cancel order #{@order1a.id}")
-    expect(page).to have_link("Mark order #{@order1a.id} paid")
-    expect(page).to have_link("Cancel order #{@order1b.id}")
-    expect(page).to have_link("Mark order #{@order1b.id} complete")
+    expect(page).to have_link("Mark order #{@order1a.id} complete")
   end
 
   scenario "when admin visits dashboard, can change status of incomplete orders" do
-    expect(page).to have_content("Paid: 2")
+    expect(page).to have_content("Completed: 2")
 
-    click_on "Mark order #{@order1a.id} paid"
+    click_on "Mark order #{@order1a.id} complete"
 
-    expect(page).to have_content("Paid: 3")
+    expect(page).to have_content("Completed: 3")
   end
 end

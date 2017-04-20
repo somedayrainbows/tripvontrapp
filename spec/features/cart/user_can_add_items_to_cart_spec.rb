@@ -58,8 +58,8 @@ RSpec.feature "When user adds experiences to cart", type: :feature do
 
 
     within ("tbody tr:nth-child(1) td.quantity") do
-      expect(page).to have_link("+")
-      expect(page).to have_link("-")
+      expect(page).to have_css("a.increase")
+      expect(page).to have_css("a.decrease")
     end
 
     within("tfoot") do

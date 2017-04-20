@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'User can have multiple orders' do
   scenario 'they can can see all of their orders when logged in' do
-    user = create(:user_with_orders)
+    user = create(:experiences_order).order.user
     login(user)
     visit '/orders'
     expect(page).to have_content(user.orders.first.created_at)
@@ -10,7 +10,7 @@ RSpec.feature 'User can have multiple orders' do
   end
 
   scenario 'they cannot see any orders when logged out' do
-    user = create(:user_with_orders)
+    user = create(:experiences_order).order.user
     experience = create(:experience)
     login(user)
     logout
@@ -19,12 +19,12 @@ RSpec.feature 'User can have multiple orders' do
   end
 
   scenario "they can't see any other users' orders" do
-    user_1 = create(:user_with_orders)
+    user_1 = create(:experiences_order).order.user
     login(user_1)
     order1 = user_1.orders.first
     order2 = user_1.orders.last
 
-    user_2 = create(:user_with_orders)
+    user_2 = create(:experiences_order).order.user
     order3 = user_2.orders.first
     order4 = user_2.orders.last
 
