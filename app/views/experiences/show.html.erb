@@ -16,7 +16,7 @@
   <%= button_to "Add to cart", cart_path(experience_id: @experience.id), class: "btn btn-info" if @experience.status == "active" %><br>
   <h3><%= "This experience is no longer available. It has been retired." if @experience.status == "retired" %></h3>
 
-  <%= link_to "Delete", experience_path(@experience), method: :delete %>
+  <%= link_to "Delete", experience_path(@experience), method: :delete if current_user.try(:admin?) %>
 </div>
 </div>
 </div>
