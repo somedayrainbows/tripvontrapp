@@ -16,7 +16,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-gem 'paperclip', '~> 5.1.0'
+gem 'paperclip', '~> 5.2.0'
 
 group :development, :test do
   gem 'byebug', platform: :mri
